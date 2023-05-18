@@ -1,0 +1,6 @@
+framework module Pods_DressMeUp {
+  umbrella header "Pods-DressMeUp-umbrella.h"
+
+  export *
+  module * { export * }
+}

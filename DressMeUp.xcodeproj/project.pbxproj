@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07E3496CF11B2B9ECF00DCC6 /* Pods_DressMeUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CCC18C64624007287B2C0B /* Pods_DressMeUp.framework */; };
 		50D1EF5C2A166AC8008E3DB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1EF5B2A166AC8008E3DB6 /* AppDelegate.swift */; };
 		50D1EF5E2A166AC8008E3DB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1EF5D2A166AC8008E3DB6 /* SceneDelegate.swift */; };
 		50D1EF602A166AC8008E3DB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1EF5F2A166AC8008E3DB6 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0AB0AC01A5B03E688A5598F9 /* Pods-DressMeUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressMeUp.debug.xcconfig"; path = "Target Support Files/Pods-DressMeUp/Pods-DressMeUp.debug.xcconfig"; sourceTree = "<group>"; };
 		50D1EF582A166AC8008E3DB6 /* DressMeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DressMeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D1EF5B2A166AC8008E3DB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50D1EF5D2A166AC8008E3DB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		50D1EF642A166AC9008E3DB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50D1EF672A166AC9008E3DB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50D1EF692A166AC9008E3DB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		529C9E2B426A614AB38B17F2 /* Pods-DressMeUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressMeUp.release.xcconfig"; path = "Target Support Files/Pods-DressMeUp/Pods-DressMeUp.release.xcconfig"; sourceTree = "<group>"; };
+		89CCC18C64624007287B2C0B /* Pods_DressMeUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DressMeUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E3496CF11B2B9ECF00DCC6 /* Pods_DressMeUp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3736311B943C06A4A9A001D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89CCC18C64624007287B2C0B /* Pods_DressMeUp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		50D1EF4F2A166AC7008E3DB6 = {
 			isa = PBXGroup;
 			children = (
 				50D1EF5A2A166AC8008E3DB6 /* DressMeUp */,
 				50D1EF592A166AC8008E3DB6 /* Products */,
+				C781E9C50421828BBF873A02 /* Pods */,
+				3736311B943C06A4A9A001D2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +82,16 @@
 			path = DressMeUp;
 			sourceTree = "<group>";
 		};
+		C781E9C50421828BBF873A02 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0AB0AC01A5B03E688A5598F9 /* Pods-DressMeUp.debug.xcconfig */,
+				529C9E2B426A614AB38B17F2 /* Pods-DressMeUp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50D1EF6C2A166AC9008E3DB6 /* Build configuration list for PBXNativeTarget "DressMeUp" */;
 			buildPhases = (
+				F8394DC3F9AB12D27E27950D /* [CP] Check Pods Manifest.lock */,
 				50D1EF542A166AC8008E3DB6 /* Sources */,
 				50D1EF552A166AC8008E3DB6 /* Frameworks */,
 				50D1EF562A166AC8008E3DB6 /* Resources */,
+				BA3D930DA6D64467EAFD2E6D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BA3D930DA6D64467EAFD2E6D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DressMeUp/Pods-DressMeUp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DressMeUp/Pods-DressMeUp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DressMeUp/Pods-DressMeUp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8394DC3F9AB12D27E27950D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DressMeUp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		50D1EF542A166AC8008E3DB6 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		50D1EF6D2A166AC9008E3DB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AB0AC01A5B03E688A5598F9 /* Pods-DressMeUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +380,7 @@
 		};
 		50D1EF6E2A166AC9008E3DB6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 529C9E2B426A614AB38B17F2 /* Pods-DressMeUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
