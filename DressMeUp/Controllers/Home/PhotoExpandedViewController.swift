@@ -3,19 +3,6 @@ import SnapKit
 
 class PhotoExpandedViewController: UIViewController {
     
-    // MARK: Color Variables
-    var primaryLabelColor : UIColor = {
-        return UIColor(red: 238/255, green: 245/255, blue: 219/255, alpha: 1)
-    }()
-    
-    var primaryColor : UIColor = {
-        return UIColor(red: 79/255, green: 99/255, blue: 103/255, alpha: 1)
-    }()
-    
-    var backgroundColor : UIColor = {
-        return UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
-    }()
-    
     // MARK: This VC specific
     var photoImageView: UIImageView = {
        var photoImageView = UIImageView()
@@ -31,13 +18,13 @@ class PhotoExpandedViewController: UIViewController {
         var inspirationsLabel = UILabel()
         inspirationsLabel.text = "Inspirations"
         inspirationsLabel.font = UIFont(name: "Lato-Black", size: 30)
-        inspirationsLabel.textColor = primaryLabelColor
+        inspirationsLabel.textColor = UIColor.primaryLabelColor
         return inspirationsLabel
     }()
     
     lazy var cameraButton: UIButton = {
         var cameraButton = UIButton()
-        let image = UIImage(systemName: "camera.circle")?.withTintColor(primaryLabelColor, renderingMode: .alwaysOriginal)
+        let image = UIImage(systemName: "camera.circle")?.withTintColor(UIColor.primaryLabelColor, renderingMode: .alwaysOriginal)
         
         cameraButton.setBackgroundImage(image, for: .normal)
         return cameraButton
@@ -72,7 +59,7 @@ class PhotoExpandedViewController: UIViewController {
     // MARK: Container Views
     lazy var topBar : UIView = {
         var topBar = UIView()
-        topBar.backgroundColor = primaryColor
+        topBar.backgroundColor = UIColor.mainThemeColor
         topBar.addSubview(topBarStack)
         return topBar
     }()
@@ -97,7 +84,7 @@ class PhotoExpandedViewController: UIViewController {
     }
     
     func setupUI() {
-        view.backgroundColor = backgroundColor
+        view.backgroundColor = UIColor.mainBackgroundColor
         
         view.addSubview(topBar)
         view.addSubview(photoImageView)

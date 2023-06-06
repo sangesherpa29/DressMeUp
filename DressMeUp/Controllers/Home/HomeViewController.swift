@@ -3,21 +3,7 @@ import SnapKit
 
 
 class HomeViewController: UIViewController {
-    
-    // MARK: Color Variables
-    var primaryLabelColor : UIColor = {
-        return UIColor(red: 238/255, green: 245/255, blue: 219/255, alpha: 1)
-    }()
-    
-    var primaryColor : UIColor = {
-        return UIColor(red: 79/255, green: 99/255, blue: 103/255, alpha: 1)
-    }()
-    
-    var backgroundColor : UIColor = {
-        return UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
-    }()
-    
-    
+
     var imageArray = ["img1", "img2", "img3", "img4"]
     
     var flowlayout: UICollectionViewFlowLayout = {
@@ -32,7 +18,7 @@ class HomeViewController: UIViewController {
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
-        collectionView.backgroundColor = backgroundColor
+        collectionView.backgroundColor = UIColor.mainBackgroundColor
         return collectionView
     }()
         
@@ -43,13 +29,13 @@ class HomeViewController: UIViewController {
         var inspirationsLabel = UILabel()
         inspirationsLabel.text = "Inspirations"
         inspirationsLabel.font = UIFont(name: "Lato-Black", size: 30)
-        inspirationsLabel.textColor = primaryLabelColor
+        inspirationsLabel.textColor = UIColor.primaryLabelColor
         return inspirationsLabel
     }()
     
     lazy var cameraButton: UIButton = {
         var cameraButton = UIButton()
-        let image = UIImage(systemName: "camera.circle")?.withTintColor(primaryLabelColor, renderingMode: .alwaysOriginal)
+        let image = UIImage(systemName: "camera.circle")?.withTintColor(UIColor.primaryLabelColor, renderingMode: .alwaysOriginal)
         
         cameraButton.setBackgroundImage(image, for: .normal)
         return cameraButton
@@ -70,7 +56,7 @@ class HomeViewController: UIViewController {
     // MARK: Container Views
     lazy var topBar : UIView = {
         var topBar = UIView()
-        topBar.backgroundColor = primaryColor
+        topBar.backgroundColor = UIColor.mainThemeColor
         topBar.addSubview(topBarStack)
         return topBar
     }()
@@ -85,7 +71,7 @@ class HomeViewController: UIViewController {
     
     
     private func setupUI() {
-        view.backgroundColor = backgroundColor
+        view.backgroundColor = UIColor.mainBackgroundColor
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -93,7 +79,7 @@ class HomeViewController: UIViewController {
         view.addSubview(topBar)
         view.addSubview(collectionView)
         
-        cameraButton.addTarget(self, action: #selector(cameraTapped), for: .touchUpInside)
+        cameraButton.addTarget(self, action: #selector(cameraTappedAction), for: .touchUpInside)
         
         // MARK: Constraints
         topBar.snp.makeConstraints { make in
@@ -123,6 +109,28 @@ class HomeViewController: UIViewController {
     @objc private func cameraTapped(_ sender: UIImageView) {
         present(TestViewController(), animated: true)
     }
+    
+    @objc func cameraTappedAction() {
+        let alert = UIAlertController(title: "Add Photo", message: "Please select a method", preferredStyle: .alert)
+    
+        alert.addAction(UIAlertAction(title: "Add from library", style: .default) { _ in
+            let vc = UIImagePickerController()
+            vc.sourceType = .photoLibrary
+            vc.delegate = self
+            vc.allowsEditing = true
+            self.present(vc, animated: true)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Take a photo", style: .default) { _ in
+            let vc = UIImagePickerController()
+            vc.sourceType = .camera
+            vc.delegate = self
+            vc.allowsEditing = true
+            self.present(vc, animated: true)
+        })
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 
 }
 
@@ -148,5 +156,12 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
 
         return cell
     }
+    
+}
+
+
+extension HomeViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
     
 }

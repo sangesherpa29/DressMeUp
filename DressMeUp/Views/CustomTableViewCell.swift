@@ -39,7 +39,7 @@ class CustomTableViewCell: UITableViewCell {
         var imageContainer = UIScrollView()
         imageContainer.isScrollEnabled = true
         imageContainer.showsHorizontalScrollIndicator = true
-//        imageContainer.backgroundColor = .green
+        imageContainer.backgroundColor = .green
         imageContainer.addSubview(img1)
         imageContainer.addSubview(img2)
         imageContainer.addSubview(img3)
@@ -97,6 +97,14 @@ class CustomTableViewCell: UITableViewCell {
         }
         img1.snp.makeConstraints { make in
             make.width.height.equalTo(imageContainerScrollView.snp.height)
+        }
+        img2.snp.makeConstraints { make in
+            make.width.height.equalTo(imageContainerScrollView.snp.height)
+            make.left.equalTo(img1.snp.right)
+        }
+        img3.snp.makeConstraints { make in
+            make.width.height.equalTo(imageContainerScrollView.snp.height)
+            make.left.equalTo(img2.snp.right)
         }
     }
     

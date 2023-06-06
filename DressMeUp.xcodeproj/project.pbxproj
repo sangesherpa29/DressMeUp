@@ -8,10 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		07E3496CF11B2B9ECF00DCC6 /* Pods_DressMeUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CCC18C64624007287B2C0B /* Pods_DressMeUp.framework */; };
+		503834A02A2C99DB00FBEC63 /* OpenSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5038349C2A2C99DB00FBEC63 /* OpenSans-Medium.ttf */; };
+		503834A12A2C99DB00FBEC63 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5038349D2A2C99DB00FBEC63 /* OpenSans-Light.ttf */; };
+		503834A22A2C99DB00FBEC63 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5038349E2A2C99DB00FBEC63 /* OpenSans-Regular.ttf */; };
+		503834A32A2C99DB00FBEC63 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5038349F2A2C99DB00FBEC63 /* OpenSans-SemiBold.ttf */; };
 		504FDBD92A28DAED00D275D4 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504FDBD82A28DAED00D275D4 /* TopBarView.swift */; };
 		506009BD2A1E72B9002EE82C /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506009BC2A1E72B9002EE82C /* CustomCollectionViewCell.swift */; };
+		50602F292A2D6D3500565639 /* CameraHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50602F282A2D6D3500565639 /* CameraHelper.swift */; };
 		507ABE562A282DD800B54499 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507ABE552A282DD800B54499 /* CustomTableViewCell.swift */; };
 		509E0C722A2B969F00A96F0A /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 509E0C712A2B969F00A96F0A /* OpenSans-Bold.ttf */; };
+		509EC7122A2CD8C80082898F /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509EC7112A2CD8C80082898F /* ProfileTableViewCell.swift */; };
+		509EC7142A2CDB370082898F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509EC7132A2CDB370082898F /* CustomButton.swift */; };
 		50A62DFE2A26DAC300D5669C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A62DFD2A26DAC300D5669C /* TestViewController.swift */; };
 		50A827092A262FC6004FC5E5 /* PhotoExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A827082A262FC6004FC5E5 /* PhotoExpandedViewController.swift */; };
 		50A8270D2A26311E004FC5E5 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8270C2A26311E004FC5E5 /* TopBar.swift */; };
@@ -28,15 +35,23 @@
 		50D1EF842A169862008E3DB6 /* RecentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1EF832A169862008E3DB6 /* RecentsViewController.swift */; };
 		50D1EF862A16987B008E3DB6 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1EF852A16987B008E3DB6 /* FavouritesViewController.swift */; };
 		50D1EF882A169882008E3DB6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1EF872A169882008E3DB6 /* ProfileViewController.swift */; };
+		50E1071C2A2C18CD00AC18DC /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1071B2A2C18CD00AC18DC /* ColorExtension.swift */; };
 		50F145CF2A297751007E39E6 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F145CE2A297751007E39E6 /* SplashScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0AB0AC01A5B03E688A5598F9 /* Pods-DressMeUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressMeUp.debug.xcconfig"; path = "Target Support Files/Pods-DressMeUp/Pods-DressMeUp.debug.xcconfig"; sourceTree = "<group>"; };
+		5038349C2A2C99DB00FBEC63 /* OpenSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Medium.ttf"; sourceTree = "<group>"; };
+		5038349D2A2C99DB00FBEC63 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		5038349E2A2C99DB00FBEC63 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		5038349F2A2C99DB00FBEC63 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		504FDBD82A28DAED00D275D4 /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		506009BC2A1E72B9002EE82C /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		50602F282A2D6D3500565639 /* CameraHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHelper.swift; sourceTree = "<group>"; };
 		507ABE552A282DD800B54499 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		509E0C712A2B969F00A96F0A /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		509EC7112A2CD8C80082898F /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		509EC7132A2CDB370082898F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		50A62DFD2A26DAC300D5669C /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		50A827082A262FC6004FC5E5 /* PhotoExpandedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExpandedViewController.swift; sourceTree = "<group>"; };
 		50A8270C2A26311E004FC5E5 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
@@ -55,6 +70,7 @@
 		50D1EF832A169862008E3DB6 /* RecentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsViewController.swift; sourceTree = "<group>"; };
 		50D1EF852A16987B008E3DB6 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		50D1EF872A169882008E3DB6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		50E1071B2A2C18CD00AC18DC /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		50F145CE2A297751007E39E6 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		529C9E2B426A614AB38B17F2 /* Pods-DressMeUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressMeUp.release.xcconfig"; path = "Target Support Files/Pods-DressMeUp/Pods-DressMeUp.release.xcconfig"; sourceTree = "<group>"; };
 		89CCC18C64624007287B2C0B /* Pods_DressMeUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DressMeUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +96,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		503834A42A2CA3B400FBEC63 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				509EC7112A2CD8C80082898F /* ProfileTableViewCell.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
 		504FDBD72A28DA6500D275D4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +115,7 @@
 		506009BB2A1E727E002EE82C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				503834A42A2CA3B400FBEC63 /* ProfileView */,
 				506009BC2A1E72B9002EE82C /* CustomCollectionViewCell.swift */,
 				507ABE552A282DD800B54499 /* CustomTableViewCell.swift */,
 			);
@@ -110,6 +135,9 @@
 			isa = PBXGroup;
 			children = (
 				50A8270C2A26311E004FC5E5 /* TopBar.swift */,
+				50E1071B2A2C18CD00AC18DC /* ColorExtension.swift */,
+				509EC7132A2CDB370082898F /* CustomButton.swift */,
+				50602F282A2D6D3500565639 /* CameraHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -167,6 +195,10 @@
 		50D1EF712A1675F3008E3DB6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				5038349D2A2C99DB00FBEC63 /* OpenSans-Light.ttf */,
+				5038349C2A2C99DB00FBEC63 /* OpenSans-Medium.ttf */,
+				5038349E2A2C99DB00FBEC63 /* OpenSans-Regular.ttf */,
+				5038349F2A2C99DB00FBEC63 /* OpenSans-SemiBold.ttf */,
 				509E0C712A2B969F00A96F0A /* OpenSans-Bold.ttf */,
 				50D1EF752A16762C008E3DB6 /* Lato-Black.ttf */,
 				50D1EF772A16762C008E3DB6 /* Lato-Bold.ttf */,
@@ -260,11 +292,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				503834A02A2C99DB00FBEC63 /* OpenSans-Medium.ttf in Resources */,
 				50D1EF792A16762C008E3DB6 /* Lato-Black.ttf in Resources */,
+				503834A32A2C99DB00FBEC63 /* OpenSans-SemiBold.ttf in Resources */,
+				503834A12A2C99DB00FBEC63 /* OpenSans-Light.ttf in Resources */,
 				50D1EF7B2A16762C008E3DB6 /* Lato-Bold.ttf in Resources */,
 				509E0C722A2B969F00A96F0A /* OpenSans-Bold.ttf in Resources */,
 				50D1EF782A16762C008E3DB6 /* Lato-Light.ttf in Resources */,
 				50D1EF7A2A16762C008E3DB6 /* Lato-Regular.ttf in Resources */,
+				503834A22A2C99DB00FBEC63 /* OpenSans-Regular.ttf in Resources */,
 				50D1EF652A166AC9008E3DB6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,9 +354,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50602F292A2D6D3500565639 /* CameraHelper.swift in Sources */,
 				50A827092A262FC6004FC5E5 /* PhotoExpandedViewController.swift in Sources */,
 				50D1EF602A166AC8008E3DB6 /* HomeViewController.swift in Sources */,
+				509EC7142A2CDB370082898F /* CustomButton.swift in Sources */,
 				506009BD2A1E72B9002EE82C /* CustomCollectionViewCell.swift in Sources */,
+				509EC7122A2CD8C80082898F /* ProfileTableViewCell.swift in Sources */,
 				50D1EF822A169853008E3DB6 /* ClosetsViewController.swift in Sources */,
 				504FDBD92A28DAED00D275D4 /* TopBarView.swift in Sources */,
 				50A8270D2A26311E004FC5E5 /* TopBar.swift in Sources */,
@@ -329,6 +368,7 @@
 				50F145CF2A297751007E39E6 /* SplashScreenViewController.swift in Sources */,
 				50D1EF802A16950F008E3DB6 /* MainTabbarController.swift in Sources */,
 				50D1EF862A16987B008E3DB6 /* FavouritesViewController.swift in Sources */,
+				50E1071C2A2C18CD00AC18DC /* ColorExtension.swift in Sources */,
 				50D1EF882A169882008E3DB6 /* ProfileViewController.swift in Sources */,
 				50A62DFE2A26DAC300D5669C /* TestViewController.swift in Sources */,
 				50D1EF5E2A166AC8008E3DB6 /* SceneDelegate.swift in Sources */,
