@@ -30,13 +30,28 @@ class ProfileViewController: UIViewController {
         return topHalfView
     }()
     
+    var emailField = getFieldContainer(textLabel: "Email", textLabelValue: "sangesherpa1215@gmail.com")
+    var genderField = getFieldContainer(textLabel: "Gender", textLabelValue: "Male")
+    var phoneField = getFieldContainer(textLabel: "Phone", textLabelValue: "98233123231")
     
-    lazy var tableView: UITableView = {
-       var tableView = UITableView()
-        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.identifier)
-        tableView.delegate = self
-        tableView.dataSource = self
-        return tableView
+    var changePasswordField = getFieldContainer(textLabel: "Change Password", textLabelValue: "• • • • • • •")
+    var changePasswordArrowButton: UIButton = {
+        var btn = UIButton()
+        let image = UIImage(systemName: "arrow.right")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal)
+        btn.setBackgroundImage(image, for: .normal)
+        btn.addTarget(self, action: #selector(changePasswordTapped), for: .touchUpInside)
+        return btn
+    }()
+    
+    lazy var fieldContainer: UIStackView = {
+       var fieldContainer = UIStackView()
+        fieldContainer.axis = .vertical
+        
+        fieldContainer.addArrangedSubview(emailField)
+        fieldContainer.addArrangedSubview(genderField)
+        fieldContainer.addArrangedSubview(phoneField)
+        fieldContainer.addArrangedSubview(changePasswordField)
+        return fieldContainer
     }()
     
     var logoutButton = customButton(backgroundColor: UIColor.mainThemeColor, title: "Log Out", titleColor: UIColor.splashLabelColor)
@@ -51,8 +66,8 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = UIColor.mainBackgroundColor
         
         view.addSubview(topHalfView)
-        view.addSubview(tableView)
-        view.addSubview(logoutButton)
+        view.addSubview(fieldContainer)
+        view.addSubview(changePasswordArrowButton)
         
         topHalfView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -67,40 +82,21 @@ class ProfileViewController: UIViewController {
             make.top.equalTo(imageContainer.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
         }
-        
-        
-        tableView.snp.makeConstraints { make in
+
+
+        fieldContainer.snp.makeConstraints { make in
             make.top.equalTo(topHalfView.snp.bottom)
             make.left.right.equalToSuperview()
-            make.height.equalTo(400)
         }
-        
-        logoutButton.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(20)
-            make.top.equalTo(tableView.snp.bottom).offset(20)
+        changePasswordArrowButton.snp.makeConstraints { make in
+            make.top.equalTo(changePasswordField.snp.top).offset(30)
+            make.right.equalToSuperview().offset(-20)
+            make.width.height.equalTo(20)
         }
-
-    }
-}
-
-
-extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.identifier, for: indexPath) as! ProfileTableViewCell
-        
-        // Configure the cell
-        cell.label.text = "Email"
-        cell.labelValue.text = "sangesherpa1215@gmail.com"
-        
-        return cell
-    }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
+    @objc func changePasswordTapped() {
+        present(TestViewController(), animated: true)
     }
 }

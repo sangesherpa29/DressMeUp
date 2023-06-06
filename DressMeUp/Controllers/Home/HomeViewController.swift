@@ -1,7 +1,6 @@
 import UIKit
 import SnapKit
 
-
 class HomeViewController: UIViewController {
 
     var imageArray = ["img1", "img2", "img3", "img4"]
@@ -36,7 +35,6 @@ class HomeViewController: UIViewController {
     lazy var cameraButton: UIButton = {
         var cameraButton = UIButton()
         let image = UIImage(systemName: "camera.circle")?.withTintColor(UIColor.primaryLabelColor, renderingMode: .alwaysOriginal)
-        
         cameraButton.setBackgroundImage(image, for: .normal)
         return cameraButton
     }()
@@ -65,7 +63,6 @@ class HomeViewController: UIViewController {
     // MARK: Main Calling method
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -87,7 +84,6 @@ class HomeViewController: UIViewController {
             make.width.equalToSuperview()
             make.height.equalTo(100)
         }
-        
         topBarStack.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
             make.right.bottom.equalToSuperview().offset(-20)
