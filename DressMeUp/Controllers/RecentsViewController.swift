@@ -20,7 +20,7 @@ class RecentsViewController: UIViewController {
     lazy var recentOutfitsContainer: UITableView = {
         var recentOutfitsContainer = UITableView()
         recentOutfitsContainer.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
-        recentOutfitsContainer.backgroundColor = backgroundColor
+        recentOutfitsContainer.backgroundColor = UIColor.mainBackgroundColor
         return recentOutfitsContainer
     }()
     
@@ -29,7 +29,7 @@ class RecentsViewController: UIViewController {
         var inspirationsLabel = UILabel()
         inspirationsLabel.text = "Recent Outfits"
         inspirationsLabel.font = UIFont(name: "Lato-Black", size: 30)
-        inspirationsLabel.textColor = primaryLabelColor
+        inspirationsLabel.textColor = UIColor.primaryLabelColor
         return inspirationsLabel
     }()
     
