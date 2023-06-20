@@ -11,7 +11,7 @@ class MainTabbarController: UITabBarController {
         tabBar.backgroundColor = UIColor(red: 254/255, green: 95/255, blue: 85/255, alpha: 1)
 
         let homeVC = UINavigationController(rootViewController: HomeViewController())
-        let closetsVC = UINavigationController(rootViewController: PhotoExpandedViewController())
+        let closetsVC = UINavigationController(rootViewController: ClosetsViewController())
         let recentsVC = UINavigationController(rootViewController: RecentsViewController())
         let favouritesVC = UINavigationController(rootViewController: FavouritesViewController())
         let profileVC = UINavigationController(rootViewController: ProfileViewController())

@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     lazy var inspirationsLabel : UILabel = {
         var inspirationsLabel = UILabel()
         inspirationsLabel.text = "Inspirations"
-        inspirationsLabel.font = UIFont(name: "Lato-Black", size: 30)
+        inspirationsLabel.font = UIFont(name: "OpenSans-Bold", size: 28)
         inspirationsLabel.textColor = UIColor.primaryLabelColor
         return inspirationsLabel
     }()
@@ -82,14 +82,16 @@ class HomeViewController: UIViewController {
         topBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.width.equalToSuperview()
-            make.height.equalTo(100)
+            make.height.equalTo(80)
         }
         topBarStack.snp.makeConstraints { make in
+            make.centerY.equalTo(topBar)
             make.left.equalToSuperview().offset(20)
             make.right.bottom.equalToSuperview().offset(-20)
         }
         cameraButton.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
+            make.width.equalTo(45)
+            make.height.equalTo(48)
         }
         
         collectionView.snp.makeConstraints { make in
@@ -123,6 +125,10 @@ class HomeViewController: UIViewController {
             vc.delegate = self
             vc.allowsEditing = true
             self.present(vc, animated: true)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default) { _ in
+            alert.dismiss(animated: true)
         })
         
         self.present(alert, animated: true, completion: nil)

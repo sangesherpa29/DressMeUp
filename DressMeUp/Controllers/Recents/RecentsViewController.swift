@@ -3,8 +3,8 @@ import SnapKit
 
 class RecentsViewController: UIViewController {
     
-    var topBar = TopBarView()
-    
+    var topBar = getTopBar(withTitle: "Recents")
+        
     lazy var recentOutfitsContainer: UITableView = {
         var recentOutfitsContainer = UITableView()
         recentOutfitsContainer.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
@@ -26,13 +26,11 @@ class RecentsViewController: UIViewController {
         recentOutfitsContainer.dataSource = self
         recentOutfitsContainer.delegate = self
         
-        // MARK: Constraints
         topBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.width.equalToSuperview()
-            make.height.equalTo(100)
+            make.left.top.right.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(80)
         }
-        
+
         recentOutfitsContainer.snp.makeConstraints { make in
             make.top.equalTo(topBar.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(20)

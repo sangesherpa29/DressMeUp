@@ -6,77 +6,34 @@
 //
 
 import UIKit
+import SnapKit
 
-class TopBarView: UIView {
-    
-    // MARK: Color Variables
-    var primaryLabelColor : UIColor = {
-        return UIColor(red: 238/255, green: 245/255, blue: 219/255, alpha: 1)
-    }()
-    
-    var primaryColor : UIColor = {
-        return UIColor(red: 79/255, green: 99/255, blue: 103/255, alpha: 1)
-    }()
-    
-    var backColor : UIColor = {
-        return UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
-    }()
-    
-    // MARK: Labels
-    lazy var inspirationsLabel : UILabel = {
-        var inspirationsLabel = UILabel()
-        inspirationsLabel.text = "Inspirations"
-        inspirationsLabel.font = UIFont(name: "Lato-Black", size: 30)
-        inspirationsLabel.textColor = primaryLabelColor
-        return inspirationsLabel
-    }()
-    
-    lazy var cameraButton: UIButton = {
-        var cameraButton = UIButton()
-        let image = UIImage(systemName: "camera.circle")?.withTintColor(primaryLabelColor, renderingMode: .alwaysOriginal)
-        cameraButton.setBackgroundImage(image, for: .normal)
-        return cameraButton
-    }()
-    
-    lazy var topBarStack : UIStackView = {
-        var topBarStack = UIStackView()
-        topBarStack.axis = .horizontal
-        topBarStack.alignment = .center
-        topBarStack.distribution = .fill
-        topBarStack.addArrangedSubview(inspirationsLabel)
-        topBarStack.addArrangedSubview(cameraButton)
-        return topBarStack
-    }()
-    
-    
-    // MARK: Container Views
-    lazy var topBar : UIView = {
-        var topBar = UIView()
-        topBar.backgroundColor = primaryColor
-        topBar.addSubview(topBarStack)
-        return topBar
-    }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(topBar)
-                
-        // MARK: Constraints
-        topBar.snp.makeConstraints { make in
-            make.top.left.right.equalTo(self)
-            make.height.equalTo(100)
-        }
+public func getTopBar(
+    withTitle title: String,
+    withColor titleColor: UIColor = UIColor.primaryLabelColor,
+    background backgroundColor: UIColor = UIColor.mainThemeColor) -> UIView {
         
-        topBarStack.snp.makeConstraints { make in
-            make.left.equalTo(self.topBar).offset(20)
-            make.right.bottom.equalTo(self.topBar).offset(-20)
+        // Labels
+        lazy var mainLabel : UILabel = {
+            var label = UILabel()
+            label.text = title
+            label.font = UIFont(name: "OpenSans-Bold", size: 28)
+            label.textColor = titleColor
+            return label
+        }()
+        
+        // Main Contaier View
+        lazy var topBar : UIView = {
+            var topBar = UIView()
+            topBar.backgroundColor = backgroundColor
+            topBar.addSubview(mainLabel)
+            return topBar
+        }()
+
+        mainLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(topBar)
+            make.left.equalTo(topBar).offset(20)
         }
-        cameraButton.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
-        }
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    return topBar
 }
