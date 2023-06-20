@@ -4,7 +4,7 @@ import SnapKit
 class HomeViewController: UIViewController {
 
     var imageArray = ["img1", "img2", "img3", "img4"]
-    
+
     var flowlayout: UICollectionViewFlowLayout = {
         var flowlayout = UICollectionViewFlowLayout()
         flowlayout.scrollDirection = .vertical
@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
         flowlayout.minimumLineSpacing = 10
         return flowlayout
     }()
-    
+
     lazy var collectionView : UICollectionView = {
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -20,8 +20,7 @@ class HomeViewController: UIViewController {
         collectionView.backgroundColor = UIColor.mainBackgroundColor
         return collectionView
     }()
-        
-    
+
     
     // MARK: Labels
     lazy var inspirationsLabel : UILabel = {
@@ -49,8 +48,8 @@ class HomeViewController: UIViewController {
         topBarStack.addArrangedSubview(cameraButton)
         return topBarStack
     }()
-    
-    
+
+
     // MARK: Container Views
     lazy var topBar : UIView = {
         var topBar = UIView()
@@ -58,24 +57,24 @@ class HomeViewController: UIViewController {
         topBar.addSubview(topBarStack)
         return topBar
     }()
-    
-    
+
+
     // MARK: Main Calling method
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
-    
+
+
     private func setupUI() {
         view.backgroundColor = UIColor.mainBackgroundColor
-        
+
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+
         view.addSubview(topBar)
         view.addSubview(collectionView)
-        
+
         cameraButton.addTarget(self, action: #selector(cameraTappedAction), for: .touchUpInside)
         
         // MARK: Constraints
@@ -162,8 +161,4 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 
-extension HomeViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    
-    
-}
+extension HomeViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {}

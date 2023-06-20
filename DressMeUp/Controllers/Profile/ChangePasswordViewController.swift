@@ -37,7 +37,8 @@ class ChangePasswordViewController: UIViewController {
         
         fieldStack.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.left.right.equalToSuperview()
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
         }
     }
 }
