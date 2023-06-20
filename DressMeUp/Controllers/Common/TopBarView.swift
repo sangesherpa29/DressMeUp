@@ -34,7 +34,6 @@ class TopBarView: UIView {
     lazy var cameraButton: UIButton = {
         var cameraButton = UIButton()
         let image = UIImage(systemName: "camera.circle")?.withTintColor(primaryLabelColor, renderingMode: .alwaysOriginal)
-        
         cameraButton.setBackgroundImage(image, for: .normal)
         return cameraButton
     }()
@@ -44,7 +43,6 @@ class TopBarView: UIView {
         topBarStack.axis = .horizontal
         topBarStack.alignment = .center
         topBarStack.distribution = .fill
-        
         topBarStack.addArrangedSubview(inspirationsLabel)
         topBarStack.addArrangedSubview(cameraButton)
         return topBarStack
@@ -61,11 +59,8 @@ class TopBarView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         addSubview(topBar)
-        
-//        cameraButton.addTarget(self, action: #selector(cameraTapped), for: .touchUpInside)
-        
+                
         // MARK: Constraints
         topBar.snp.makeConstraints { make in
             make.top.left.right.equalTo(self)
@@ -84,9 +79,4 @@ class TopBarView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-//    @objc private func cameraTapped(_ sender: UIImageView) {
-//        present(TestViewController(), animated: true)
-//    }
 }

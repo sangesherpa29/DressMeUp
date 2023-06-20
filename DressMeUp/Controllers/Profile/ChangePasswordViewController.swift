@@ -16,7 +16,6 @@ class ChangePasswordViewController: UIViewController {
         var stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 20
-        
         stack.addArrangedSubview(oldPassword)
         stack.addArrangedSubview(newPassword)
         stack.addArrangedSubview(confirmPassword)
