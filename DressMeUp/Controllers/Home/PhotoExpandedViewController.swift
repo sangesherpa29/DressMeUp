@@ -6,9 +6,10 @@ class PhotoExpandedViewController: UIViewController {
     // MARK: This VC specific
     var photoImageView: UIImageView = {
        var photoImageView = UIImageView()
-        photoImageView.contentMode = .scaleAspectFit
+        photoImageView.contentMode = .scaleAspectFill
+        photoImageView.clipsToBounds = true
+        photoImageView.layer.cornerRadius = 3
         photoImageView.image = UIImage(systemName: "exclamationmark.circle.fill")
-        photoImageView.backgroundColor = .gray
         return photoImageView
     }()
     
@@ -51,10 +52,11 @@ class PhotoExpandedViewController: UIViewController {
     var heartImageButton: UIButton = {
         var heartImageButton = UIButton()
         let heartImage = UIImage(systemName: "heart")?.withTintColor(.black, renderingMode: .alwaysOriginal)
-        
         heartImageButton.setBackgroundImage(heartImage, for: .normal)
         return heartImageButton
     }()
+    
+    var imageLiked = false
     
     // MARK: Container Views
     lazy var topBar : UIView = {
@@ -69,7 +71,6 @@ class PhotoExpandedViewController: UIViewController {
         labelStack.axis = .horizontal
         labelStack.distribution = .fill
         labelStack.alignment = .center
-                
         labelStack.addArrangedSubview(photoItemName)
         labelStack.addArrangedSubview(heartImageButton)
         return labelStack
@@ -89,6 +90,8 @@ class PhotoExpandedViewController: UIViewController {
         view.addSubview(topBar)
         view.addSubview(photoImageView)
         view.addSubview(labelStack)
+        
+//        heartImageButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
                 
         // MARK: Constraints
         topBar.snp.makeConstraints { make in
@@ -122,4 +125,11 @@ class PhotoExpandedViewController: UIViewController {
         
         
     }
+    
+//    @objc func likeButtonTapped() {
+//        imageLiked = true
+//        let heartImage = UIImage(systemName: "heart.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+//        heartImageButton.setBackgroundImage(heartImage, for: .normal)
+//    }
+    
 }
