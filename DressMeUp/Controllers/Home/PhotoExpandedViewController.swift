@@ -23,25 +23,6 @@ class PhotoExpandedViewController: UIViewController {
         return inspirationsLabel
     }()
     
-    lazy var cameraButton: UIButton = {
-        var cameraButton = UIButton()
-        let image = UIImage(systemName: "camera.circle")?.withTintColor(UIColor.primaryLabelColor, renderingMode: .alwaysOriginal)
-        
-        cameraButton.setBackgroundImage(image, for: .normal)
-        return cameraButton
-    }()
-    
-    lazy var topBarStack : UIStackView = {
-        var topBarStack = UIStackView()
-        topBarStack.axis = .horizontal
-        topBarStack.alignment = .center
-        topBarStack.distribution = .fill
-        
-        topBarStack.addArrangedSubview(inspirationsLabel)
-        topBarStack.addArrangedSubview(cameraButton)
-        return topBarStack
-    }()
-    
     var photoItemName: UILabel = {
         var photoItemName = UILabel()
         photoItemName.text = "Black Trousers"
@@ -62,7 +43,7 @@ class PhotoExpandedViewController: UIViewController {
     lazy var topBar : UIView = {
         var topBar = UIView()
         topBar.backgroundColor = UIColor.mainThemeColor
-        topBar.addSubview(topBarStack)
+        topBar.addSubview(inspirationsLabel)
         return topBar
     }()
     
@@ -97,14 +78,11 @@ class PhotoExpandedViewController: UIViewController {
         topBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.width.equalToSuperview()
-            make.height.equalTo(100)
+            make.height.equalTo(90)
         }
-        topBarStack.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(20)
-            make.right.bottom.equalToSuperview().offset(-20)
-        }
-        cameraButton.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
+        inspirationsLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(topBar)
+            make.left.equalTo(topBar).offset(20)
         }
         
         photoImageView.snp.makeConstraints { make in
