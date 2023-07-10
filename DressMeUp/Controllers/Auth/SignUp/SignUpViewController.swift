@@ -20,7 +20,6 @@ class SignUpViewController: UIViewController {
         stack.addArrangedSubview(email)
         stack.addArrangedSubview(password)
         stack.addArrangedSubview(confirmPassword)
-        stack.addArrangedSubview(gender)
         return stack
     }()
     
@@ -38,7 +37,6 @@ class SignUpViewController: UIViewController {
     var signInInsteadButton: UIButton = {
         var btn = UIButton()
         btn.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 13)
-//        btn.titleLabel.textStyle = .
         btn.setTitle("sign in".uppercased(), for: .normal)
         btn.setTitleColor(UIColor.mainThemeColor, for: .normal)
         btn.backgroundColor = .none
@@ -51,7 +49,6 @@ class SignUpViewController: UIViewController {
     @FormMaterialTextField(placeholder: "Email") var email : MaterialComponents.MDCOutlinedTextField
     @FormMaterialTextField(placeholder: "Password") var password : MaterialComponents.MDCOutlinedTextField
     @FormMaterialTextField(placeholder: "Confirm Password") var confirmPassword : MaterialComponents.MDCOutlinedTextField
-    @FormMaterialTextField(placeholder: "Gender") var gender : MaterialComponents.MDCOutlinedTextField
 
     
     // MARK: Main Method
