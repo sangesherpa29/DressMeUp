@@ -22,6 +22,8 @@ class ChangePasswordViewController: UIViewController {
         return stack
     }()
     
+    var saveBtn = customButton(title: "Save", titleColor: .primaryLabelColor)
+    
     @FormMaterialTextField(placeholder: "Old Password") var oldPassword : MaterialComponents.MDCOutlinedTextField
     @FormMaterialTextField(placeholder: "New Password") var newPassword : MaterialComponents.MDCOutlinedTextField
     @FormMaterialTextField(placeholder: "Confirm Password") var confirmPassword : MaterialComponents.MDCOutlinedTextField
@@ -34,11 +36,16 @@ class ChangePasswordViewController: UIViewController {
     private func setup() {
         view.backgroundColor = .mainBackgroundColor
         view.addSubview(fieldStack)
+        view.addSubview(saveBtn)
         
         fieldStack.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
+        }
+        saveBtn.snp.makeConstraints { make in
+            make.top.equalTo(fieldStack.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(20)
         }
     }
 }
