@@ -15,7 +15,7 @@ public func getTopBar(
         
         // Labels
         lazy var mainLabel : UILabel = {
-            var label = UILabel()
+            let label = UILabel()
             label.text = title
             label.font = UIFont(name: "OpenSans-Bold", size: 28)
             label.textColor = titleColor
@@ -24,7 +24,7 @@ public func getTopBar(
         
         // Main Contaier View
         lazy var topBar : UIView = {
-            var topBar = UIView()
+            let topBar = UIView()
             topBar.backgroundColor = backgroundColor
             topBar.addSubview(mainLabel)
             return topBar

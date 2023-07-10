@@ -22,6 +22,9 @@
 		509EC7142A2CDB370082898F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509EC7132A2CDB370082898F /* CustomButton.swift */; };
 		50A62DFE2A26DAC300D5669C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A62DFD2A26DAC300D5669C /* TestViewController.swift */; };
 		50A827092A262FC6004FC5E5 /* PhotoExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A827082A262FC6004FC5E5 /* PhotoExpandedViewController.swift */; };
+		50AD699E2A5BECB0009C418B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD699D2A5BECB0009C418B /* SignUpViewController.swift */; };
+		50AD69A02A5BEF25009C418B /* SimpleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD699F2A5BEF25009C418B /* SimpleLabel.swift */; };
+		50AD69A22A5BF05A009C418B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD69A12A5BF05A009C418B /* LoginViewController.swift */; };
 		50D1EF5C2A166AC8008E3DB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1EF5B2A166AC8008E3DB6 /* AppDelegate.swift */; };
 		50D1EF5E2A166AC8008E3DB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1EF5D2A166AC8008E3DB6 /* SceneDelegate.swift */; };
 		50D1EF602A166AC8008E3DB6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1EF5F2A166AC8008E3DB6 /* HomeViewController.swift */; };
@@ -55,6 +58,9 @@
 		509EC7132A2CDB370082898F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		50A62DFD2A26DAC300D5669C /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		50A827082A262FC6004FC5E5 /* PhotoExpandedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExpandedViewController.swift; sourceTree = "<group>"; };
+		50AD699D2A5BECB0009C418B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		50AD699F2A5BEF25009C418B /* SimpleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLabel.swift; sourceTree = "<group>"; };
+		50AD69A12A5BF05A009C418B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		50D1EF582A166AC8008E3DB6 /* DressMeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DressMeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D1EF5B2A166AC8008E3DB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50D1EF5D2A166AC8008E3DB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,9 +175,35 @@
 			children = (
 				50E1071B2A2C18CD00AC18DC /* ColorExtension.swift */,
 				509EC7132A2CDB370082898F /* CustomButton.swift */,
+				50AD699F2A5BEF25009C418B /* SimpleLabel.swift */,
 				503FDFD62A41897400D5ACF7 /* FieldPropertyWrapper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		50AD699A2A5BEC93009C418B /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				50AD699C2A5BECA2009C418B /* SignUp */,
+				50AD699B2A5BEC9C009C418B /* Login */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		50AD699B2A5BEC9C009C418B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				50AD69A12A5BF05A009C418B /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		50AD699C2A5BECA2009C418B /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				50AD699D2A5BECB0009C418B /* SignUpViewController.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		50D1EF4F2A166AC7008E3DB6 = {
@@ -243,6 +275,7 @@
 		50D1EF7C2A1677F4008E3DB6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				50AD699A2A5BEC93009C418B /* Auth */,
 				504FDBD72A28DA6500D275D4 /* Common */,
 				50A8270A2A262FCC004FC5E5 /* Home */,
 				503FDFD32A41888A00D5ACF7 /* Closets */,
@@ -387,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50A827092A262FC6004FC5E5 /* PhotoExpandedViewController.swift in Sources */,
+				50AD69A02A5BEF25009C418B /* SimpleLabel.swift in Sources */,
 				50D1EF602A166AC8008E3DB6 /* HomeViewController.swift in Sources */,
 				509EC7142A2CDB370082898F /* CustomButton.swift in Sources */,
 				503FDFD12A41886B00D5ACF7 /* ChangePasswordViewController.swift in Sources */,
@@ -395,11 +429,13 @@
 				504FDBD92A28DAED00D275D4 /* TopBarView.swift in Sources */,
 				50D1EF5C2A166AC8008E3DB6 /* AppDelegate.swift in Sources */,
 				5086BE682A2EBEC700275343 /* FieldsContainer.swift in Sources */,
+				50AD69A22A5BF05A009C418B /* LoginViewController.swift in Sources */,
 				50D1EF842A169862008E3DB6 /* RecentsViewController.swift in Sources */,
 				50F145CF2A297751007E39E6 /* SplashScreenViewController.swift in Sources */,
 				50D1EF802A16950F008E3DB6 /* MainTabbarController.swift in Sources */,
 				50D1EF862A16987B008E3DB6 /* FavouritesViewController.swift in Sources */,
 				50E1071C2A2C18CD00AC18DC /* ColorExtension.swift in Sources */,
+				50AD699E2A5BECB0009C418B /* SignUpViewController.swift in Sources */,
 				50D1EF882A169882008E3DB6 /* ProfileViewController.swift in Sources */,
 				50A62DFE2A26DAC300D5669C /* TestViewController.swift in Sources */,
 				50D1EF5E2A166AC8008E3DB6 /* SceneDelegate.swift in Sources */,
@@ -540,6 +576,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -568,6 +605,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
