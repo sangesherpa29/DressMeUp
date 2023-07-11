@@ -8,10 +8,6 @@
 import UIKit
 import SnapKit
 
-struct Closet {
-    var name: String
-}
-
 class ClosetsViewController: UIViewController {
     
     var closets = [String]()
@@ -34,6 +30,13 @@ class ClosetsViewController: UIViewController {
         btn.setBackgroundImage(image, for: .normal)
         return btn
     }()
+    
+    var editButton: UIButton = {
+        var btn = UIButton()
+        let image = UIImage(systemName: "pencil")?.withTintColor(UIColor.primaryLabelColor, renderingMode: .alwaysOriginal)
+        btn.setBackgroundImage(image, for: .normal)
+        return btn
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +48,21 @@ class ClosetsViewController: UIViewController {
         view.addSubview(topBar)
         view.addSubview(table)
         view.addSubview(addClosetButton)
+        view.addSubview(editButton)
         
         addClosetButton.addTarget(self, action: #selector(addClosetTapped), for: .touchUpInside)
+        editButton.addTarget(self, action: #selector(editTapped), for: .touchUpInside)
         
         topBar.snp.makeConstraints { make in
             make.left.top.right.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(80)
         }
         addClosetButton.snp.makeConstraints { make in
+            make.centerY.equalTo(topBar)
+            make.right.equalTo(editButton.snp.left).offset(-10)
+            make.width.height.equalTo(30)
+        }
+        editButton.snp.makeConstraints { make in
             make.centerY.equalTo(topBar)
             make.right.equalToSuperview().offset(-20)
             make.width.height.equalTo(30)
@@ -64,7 +74,7 @@ class ClosetsViewController: UIViewController {
         }
     }
     
-    @objc func addClosetTapped() {
+    @objc func addClosetTapped(_ sender: UIButton) {
         let alert = UIAlertController(title: "Add a Closet", message: "", preferredStyle: .alert)
         alert.addTextField { textfield in
             textfield.placeholder = "Closet Name"
@@ -85,6 +95,14 @@ class ClosetsViewController: UIViewController {
         
         self.present(alert, animated: true)
     }
+    
+    @objc func editTapped(_ sender: UIButton) {
+        if table.isEditing == false {
+            table.isEditing = true
+        } else {
+            table.isEditing = false
+        }
+    }
 
 }
 
@@ -102,8 +120,16 @@ extension ClosetsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.ed
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool { true }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.closets.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
     
 }

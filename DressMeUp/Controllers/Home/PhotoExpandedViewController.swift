@@ -71,9 +71,7 @@ class PhotoExpandedViewController: UIViewController {
         view.addSubview(topBar)
         view.addSubview(photoImageView)
         view.addSubview(labelStack)
-        
-//        heartImageButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
-                
+                        
         // MARK: Constraints
         topBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)

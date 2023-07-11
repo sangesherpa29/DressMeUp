@@ -1,19 +1,20 @@
 import UIKit
 import SnapKit
+import Alamofire
 
 class HomeViewController: UIViewController {
-
+    
+    var urlString = "https://api.unsplash.com/search/collections?page=1&per_page=30&query=fashion&client_id=qzPoaDGNkM9dmkfKUhwHXal4rfVBBfITIEJZwMvpISg"
+    var results: [Result] = []
+    
     var imageArray = ["img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10"]
 
-    var flowlayout: UICollectionViewFlowLayout = {
+    lazy var collectionView : UICollectionView = {
         var flowlayout = UICollectionViewFlowLayout()
         flowlayout.scrollDirection = .vertical
         flowlayout.minimumInteritemSpacing = 10
         flowlayout.minimumLineSpacing = 10
-        return flowlayout
-    }()
-
-    lazy var collectionView : UICollectionView = {
+        
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
@@ -62,6 +63,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        fetchPhotos()
     }
 
 
@@ -80,7 +82,7 @@ class HomeViewController: UIViewController {
         topBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.width.equalToSuperview()
-            make.height.equalTo(90)
+            make.height.equalTo(80)
         }
         topBarStack.snp.makeConstraints { make in
             make.centerY.equalTo(topBar)
@@ -88,7 +90,7 @@ class HomeViewController: UIViewController {
             make.right.bottom.equalToSuperview().offset(-20)
         }
         cameraButton.snp.makeConstraints { make in
-            make.width.height.equalTo(45)
+            make.width.height.equalTo(40)
         }
         
         collectionView.snp.makeConstraints { make in
@@ -127,38 +129,5 @@ class HomeViewController: UIViewController {
     }
 
 }
-
-
-
-
-extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageArray.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2-5, height: 200)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as! CustomCollectionViewCell
-        
-        // Configure the cell
-        let currentImage = imageArray[indexPath.row]
-        cell.imageView.image = UIImage(named: "\(currentImage)")
-
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let photoExpandedVC = PhotoExpandedViewController()
-        let currentImage = imageArray[indexPath.row]
-        photoExpandedVC.photoImageView.image = UIImage(named: "\(currentImage)")
-        self.navigationController?.pushViewController(photoExpandedVC, animated: true)
-    }
-    
-}
-
 
 extension HomeViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {}
