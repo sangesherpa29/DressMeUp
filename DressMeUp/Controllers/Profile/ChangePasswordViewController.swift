@@ -24,13 +24,23 @@ class ChangePasswordViewController: UIViewController {
     
     var saveBtn = customButton(title: "Save", titleColor: .primaryLabelColor)
     
-    @FormMaterialTextField(placeholder: "Old Password") var oldPassword : MaterialComponents.MDCOutlinedTextField
-    @FormMaterialTextField(placeholder: "New Password") var newPassword : MaterialComponents.MDCOutlinedTextField
-    @FormMaterialTextField(placeholder: "Confirm Password") var confirmPassword : MaterialComponents.MDCOutlinedTextField
+    @FormMaterialTextField(placeholder: "Old Password", isSecureTextEntry: true) var oldPassword : MaterialComponents.MDCOutlinedTextField
+    @FormMaterialTextField(placeholder: "New Password", isSecureTextEntry: true) var newPassword : MaterialComponents.MDCOutlinedTextField
+    @FormMaterialTextField(placeholder: "Confirm Password", isSecureTextEntry: true) var confirmPassword : MaterialComponents.MDCOutlinedTextField
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        
+        oldPassword.apply {
+            $0.enablePasswordToggle()
+        }
+        newPassword.apply {
+            $0.enablePasswordToggle()
+        }
+        confirmPassword.apply {
+            $0.enablePasswordToggle()
+        }
     }
     
     private func setup() {

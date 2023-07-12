@@ -37,6 +37,7 @@ extension HomeViewController {
         }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            
             guard let data = data, error == nil else {
                 print("Could not get data")
                 return
@@ -47,7 +48,8 @@ extension HomeViewController {
                 
                 for res in jsonData.results {
                     self?.results.append(res)
-                }                
+                }
+
             }
             catch {
                 print(error)

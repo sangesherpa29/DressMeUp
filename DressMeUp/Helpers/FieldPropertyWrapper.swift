@@ -35,7 +35,39 @@ public class FormMaterialTextField {
         wrappedValue.preferredContainerHeight = 44
         wrappedValue.sizeToFit()
     }
+}
 
-
+extension MDCOutlinedTextField{
+    
+    func enablePasswordToggle(){
+        
+        let passwordHidden = UIImage(named: "ic_password_hidden")! as UIImage
+        let passwordVisible = UIImage(named: "ic_password_visible")! as UIImage
+        
+        
+        let toggleView = UIImageView(image: passwordHidden).apply{ [self] view in
+            view.addOnClickListner {
+                self.isSecureTextEntry = !self.isSecureTextEntry
+                view.image = self.isSecureTextEntry ? passwordHidden : passwordVisible
+            }
+            view.contentMode = .scaleAspectFit
+            view.alpha = 0.2
+            view.frame = CGRect(origin: .zero, size:CGSize(width: 20, height: 20))
+        }
+        self.trailingViewMode = .always
+        self.trailingView = toggleView
+        
+    }
+    
+    func addTrailingView(view:UIView){
+        self.trailingViewMode = .always
+        self.trailingView = view
+    }
+    
+    func addLeadingView(view:UIView){
+        self.leadingViewMode = .always
+        self.leadingView = view
+    }
+    
 }
 

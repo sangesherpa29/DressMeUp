@@ -14,4 +14,5 @@ target 'DressMeUp' do
   pod 'MaterialComponents/TextControls+OutlinedTextFields'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxDataSources'
 end

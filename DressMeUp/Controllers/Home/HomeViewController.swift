@@ -131,3 +131,41 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {}
+
+extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: collectionView.frame.width/2-5, height: 200)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: CustomCollectionViewCell.identifier,
+            for: indexPath) as? CustomCollectionViewCell else {
+            print("Could not cast Cell")
+            return UICollectionViewCell()
+        }
+        
+        for res in results {
+            let imageUrl = URL(string: res.cover_photo.urls.regular)
+            print(res)
+        }
+
+
+        // Configure the cell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photoExpandedVC = PhotoExpandedViewController()
+        let currentImage = results[indexPath.row]
+        photoExpandedVC.photoImageView.image = UIImage(named: "\(currentImage)")
+        self.navigationController?.pushViewController(photoExpandedVC, animated: true)
+    }
+    
+}
