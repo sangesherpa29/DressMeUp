@@ -32,15 +32,10 @@ class RecentsViewController: UIViewController {
         }
 
         recentOutfitsContainer.snp.makeConstraints { make in
-            make.top.equalTo(topBar.snp.bottom).offset(20)
-            make.left.equalToSuperview().offset(20)
-            make.right.bottom.equalToSuperview().offset(-20)
+            make.top.equalTo(topBar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.bottom.equalToSuperview()
         }
-    }
-    
-    
-    @objc private func cameraTapped(_ sender: UIImageView) {
-        present(TestViewController(), animated: true)
     }
     
 }

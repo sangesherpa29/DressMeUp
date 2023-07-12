@@ -14,7 +14,7 @@ func customLabel(
     titleFont: UIFont? = UIFont(name: "OpenSans-Regular", size: 13)
 ) -> UILabel {
     
-    var label = UILabel()
+    let label = UILabel()
     label.text = title
     return label
 }

@@ -16,11 +16,10 @@ class ClosetsViewController: UIViewController {
     
     lazy var table: UITableView = {
         var table = UITableView()
-        table.layer.cornerRadius = 5
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "TableCell")
+        table.register(ClosetTableViewCell.self, forCellReuseIdentifier: ClosetTableViewCell.identifier)
         table.delegate = self
         table.dataSource = self
-        table.isEditing = true
+        table.isEditing = false
         return table
     }()
     
@@ -114,8 +113,10 @@ extension ClosetsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 70 }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath)
-        cell.textLabel?.text = closets[indexPath.row]
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: ClosetTableViewCell.identifier,
+            for: indexPath) as! ClosetTableViewCell
+        cell.nameLabel.text = closets[indexPath.row]
         return cell
     }
     
