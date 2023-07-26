@@ -5,9 +5,8 @@ import Alamofire
 class HomeViewController: UIViewController {
     
     var urlString = "https://api.unsplash.com/search/collections?page=1&per_page=30&query=fashion&client_id=qzPoaDGNkM9dmkfKUhwHXal4rfVBBfITIEJZwMvpISg"
-    var results: [Result] = []
     
-    var imageArray = ["img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10"]
+    var imageArray = [String]()
 
     lazy var collectionView : UICollectionView = {
         var flowlayout = UICollectionViewFlowLayout()
@@ -63,7 +62,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        fetchPhotos()
     }
 
 
@@ -151,11 +149,18 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             return UICollectionViewCell()
         }
         
-        for res in results {
-            let imageUrl = URL(string: res.cover_photo.urls.regular)
-            print(res)
+        DispatchQueue.main.async {
+            self.fetchPhotos { data in
+                
+                if let data = try? Data(contentsOf: URL(string: data.results[0].coverPhoto.urls.small)!) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            cell.imageView.image = image
+                        }
+                    }
+                }
+            }
         }
-
 
         // Configure the cell
         return cell
@@ -163,8 +168,8 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let photoExpandedVC = PhotoExpandedViewController()
-        let currentImage = results[indexPath.row]
-        photoExpandedVC.photoImageView.image = UIImage(named: "\(currentImage)")
+//        let currentCell = collectionView.indexPathForItem(at: indexPath.row)
+//        photoExpandedVC.photoImageView.image = UIImage(named: currentCell)
         self.navigationController?.pushViewController(photoExpandedVC, animated: true)
     }
     

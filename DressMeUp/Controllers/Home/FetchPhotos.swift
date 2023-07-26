@@ -14,11 +14,14 @@ struct APIResponse: Codable {
 }
 
 struct Result: Codable {
-    var title: String
-    var cover_photo: Cover
+    let coverPhoto: ResultCoverPhoto
+    
+    enum CodingKeys: String, CodingKey {
+        case coverPhoto = "cover_photo"
+    }
 }
 
-struct Cover: Codable {
+struct ResultCoverPhoto: Codable {
     let urls: Url
 }
 
@@ -29,14 +32,14 @@ struct Url: Codable {
 }
 
 extension HomeViewController {
-    func fetchPhotos() {
+    func fetchPhotos( _ completion: @escaping (APIResponse)-> Void) {
         
         guard let url = URL(string: urlString) else {
             print("Could not parse url")
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             
             guard let data = data, error == nil else {
                 print("Could not get data")
@@ -45,10 +48,7 @@ extension HomeViewController {
             
             do {
                 let jsonData = try JSONDecoder().decode(APIResponse.self, from: data)
-                
-                for res in jsonData.results {
-                    self?.results.append(res)
-                }
+                completion(jsonData)
 
             }
             catch {

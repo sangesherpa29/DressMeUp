@@ -76,7 +76,7 @@ class PhotoExpandedViewController: UIViewController {
         topBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.width.equalToSuperview()
-            make.height.equalTo(90)
+            make.height.equalTo(80)
         }
         inspirationsLabel.snp.makeConstraints { make in
             make.centerY.equalTo(topBar)
@@ -101,11 +101,5 @@ class PhotoExpandedViewController: UIViewController {
         
         
     }
-    
-//    @objc func likeButtonTapped() {
-//        imageLiked = true
-//        let heartImage = UIImage(systemName: "heart.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
-//        heartImageButton.setBackgroundImage(heartImage, for: .normal)
-//    }
     
 }
