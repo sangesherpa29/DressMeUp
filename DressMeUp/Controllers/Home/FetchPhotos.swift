@@ -29,27 +29,29 @@ struct Url: Codable {
     let full: String
     let regular: String
     let small: String
+    let small_s3: String
 }
 
+// All the Inspiration page images are fetched from here
+// and displayed from HomeViewController
 extension HomeViewController {
     func fetchPhotos( _ completion: @escaping (APIResponse)-> Void) {
         
-        guard let url = URL(string: urlString) else {
-            print("Could not parse url")
+        guard let url = URL(string: .unsplashApiUrl) else {
+            print(String.parseError)
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             
             guard let data = data, error == nil else {
-                print("Could not get data")
+                print(String.dataError)
                 return
             }
             
             do {
                 let jsonData = try JSONDecoder().decode(APIResponse.self, from: data)
                 completion(jsonData)
-
             }
             catch {
                 print(error)

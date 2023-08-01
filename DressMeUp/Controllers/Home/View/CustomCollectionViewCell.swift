@@ -10,8 +10,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 3
-//        imageView.image = UIImage(systemName: "i.circle")
-        imageView.backgroundColor = .red
         return imageView
     }()
     

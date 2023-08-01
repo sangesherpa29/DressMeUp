@@ -4,9 +4,8 @@ import Alamofire
 
 class HomeViewController: UIViewController {
     
-    var urlString = "https://api.unsplash.com/search/collections?page=1&per_page=30&query=fashion&client_id=qzPoaDGNkM9dmkfKUhwHXal4rfVBBfITIEJZwMvpISg"
-    
-    var imageArray = [String]()
+    // this array of images if populated with images from the API Call - fetchPhotos()
+    var images = [UIImage]()
 
     lazy var collectionView : UICollectionView = {
         var flowlayout = UICollectionViewFlowLayout()
@@ -62,8 +61,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        fetchImagesFromApi()
     }
-
 
     private func setupUI() {
         view.backgroundColor = UIColor.mainBackgroundColor
@@ -100,6 +99,23 @@ class HomeViewController: UIViewController {
        
     }
     
+    // Solely used to add images from api to the images array above
+    private func fetchImagesFromApi() {
+        var count = 0
+        DispatchQueue.main.async {
+            self.fetchPhotos { data in
+                for _ in 0..<data.results.count {
+                    count += 1
+                }
+            }
+            
+            // re-trigger the collection view's layout
+            self.collectionView.collectionViewLayout.invalidateLayout()
+            // reload the collection View since to accomodate each image update
+            self.collectionView.reloadData()            
+        }
+    }
+    
     @objc func cameraTappedAction() {
         let alert = UIAlertController(title: "Add Photo", message: "Please select a method", preferredStyle: .alert)
     
@@ -133,7 +149,7 @@ extension HomeViewController : UIImagePickerControllerDelegate, UINavigationCont
 extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        return 30
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -152,13 +168,20 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         DispatchQueue.main.async {
             self.fetchPhotos { data in
                 
-                if let data = try? Data(contentsOf: URL(string: data.results[0].coverPhoto.urls.small)!) {
+                // 2. Get data that represents the corresponding image
+                if let data = try? Data(contentsOf: URL(string: data.results[indexPath.row].coverPhoto.urls.small_s3)!) {
+                    
+                    // 3. Use that data to create the image
                     if let image = UIImage(data: data) {
+                    
+                        // Append that image to the images array above.
+                        // self.images.append(image)
                         DispatchQueue.main.async {
                             cell.imageView.image = image
                         }
                     }
                 }
+                
             }
         }
 
