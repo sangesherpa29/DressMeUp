@@ -14,7 +14,7 @@ class ClosetsViewController: UIViewController {
     
     var topBar = getTopBar(withTitle: "Closets")
     
-    lazy var table: UITableView = {
+    lazy var closetsTableView: UITableView = {
         var table = UITableView()
         table.register(ClosetTableViewCell.self, forCellReuseIdentifier: ClosetTableViewCell.identifier)
         table.delegate = self
@@ -45,7 +45,7 @@ class ClosetsViewController: UIViewController {
     private func setup() {
         view.backgroundColor = UIColor.mainBackgroundColor
         view.addSubview(topBar)
-        view.addSubview(table)
+        view.addSubview(closetsTableView)
         view.addSubview(addClosetButton)
         view.addSubview(editButton)
         
@@ -67,7 +67,7 @@ class ClosetsViewController: UIViewController {
             make.width.height.equalTo(30)
         }
         
-        table.snp.makeConstraints { make in
+        closetsTableView.snp.makeConstraints { make in
             make.top.equalTo(topBar.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
@@ -84,7 +84,7 @@ class ClosetsViewController: UIViewController {
             if let closetName = alert.textFields?.first?.text {
                 // Add to the closets array which then reflects changes onto the table
                 self.closets.append(closetName)
-                self.table.reloadData()
+                self.closetsTableView.reloadData()
             }
         })
         
@@ -96,10 +96,10 @@ class ClosetsViewController: UIViewController {
     }
     
     @objc func editTapped(_ sender: UIButton) {
-        if table.isEditing == false {
-            table.isEditing = true
+        if closetsTableView.isEditing == false {
+            closetsTableView.isEditing = true
         } else {
-            table.isEditing = false
+            closetsTableView.isEditing = false
         }
     }
 
@@ -108,7 +108,9 @@ class ClosetsViewController: UIViewController {
 
 extension ClosetsViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { closets.count }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        closets.count
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 70 }
     
@@ -122,6 +124,11 @@ extension ClosetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        // pushes a ViewController when a closet(table cell) is tapped
+        let singleClosetVC = SingleClosetViewController()
+        singleClosetVC.closetName.text = closets[indexPath.row]
+        self.navigationController?.pushViewController(singleClosetVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool { true }
