@@ -144,8 +144,6 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {}
-
 extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -191,8 +189,6 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let photoExpandedVC = PhotoExpandedViewController()
-//        let currentCell = collectionView.indexPathForItem(at: indexPath.row)
-//        photoExpandedVC.photoImageView.image = UIImage(named: currentCell)
         self.navigationController?.pushViewController(photoExpandedVC, animated: true)
     }
     

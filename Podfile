@@ -8,12 +8,18 @@ target 'DressMeUp' do
  # Pods for DressMeUp
   pod 'SnapKit', '~> 5.0.0'
   pod 'Alamofire'
+
   pod 'MaterialComponents/TextControls+FilledTextAreas'
   pod 'MaterialComponents/TextControls+FilledTextFields'
   pod 'MaterialComponents/TextControls+OutlinedTextAreas'
   pod 'MaterialComponents/TextControls+OutlinedTextFields'
   pod 'MaterialComponents/Tabs+TabBarView'
+
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxGesture'
   pod 'RxDataSources'
+
+  pod "BSImagePicker", "~> 3.1"
+  pod 'SDWebImage', '~> 5.0'
 end

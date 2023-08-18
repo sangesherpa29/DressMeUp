@@ -1,12 +1,26 @@
 import UIKit
 import SnapKit
+import RxSwift
+import RxGesture
+import RxRelay
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: RootViewController {
+    
+    // MARK: Relating to User's profile image
+    // Bind this relay to userProfileImage
+    let userProfileImageRelay  = BehaviorRelay<UIImage?>(value:nil)
+    let userProfileImageURL  = BehaviorRelay<String?>(value:nil)
+    
+    let placeholderImage = UIImageView(image: UIImage(named: "user-placeholder")).apply { it in
+        it.contentMode = .scaleAspectFit
+        it.layer.cornerRadius = 75
+        it.clipsToBounds = true
+    }
 
-    var imageContainer: UIImageView = {
+    var userProfileImage: UIImageView = {
         var imageContainer = UIImageView()
         imageContainer.contentMode = .scaleToFill
-        imageContainer.image = UIImage(named: "user-placeholder")
+        imageContainer = UIImageView(image: nil)
         imageContainer.backgroundColor = .black
         imageContainer.clipsToBounds = true
         imageContainer.layer.cornerRadius = 75
@@ -15,7 +29,7 @@ class ProfileViewController: UIViewController {
 
     var nameLabel: UILabel = {
         var nameLabel = UILabel()
-        nameLabel.text = "Lakpa Sange Sherpa"
+        nameLabel.text = "Full name"
         nameLabel.font = UIFont(name: "OpenSans-SemiBold", size: 15)
         nameLabel.textColor = UIColor.splashLabelColor
         return nameLabel
@@ -24,15 +38,16 @@ class ProfileViewController: UIViewController {
     lazy var topHalfView: UIView = {
         var topHalfView = UIView()
         topHalfView.backgroundColor = UIColor.mainThemeColor
-        topHalfView.addSubview(imageContainer)
+        topHalfView.addSubview(userProfileImage)
+        topHalfView.addSubview(placeholderImage)
         topHalfView.addSubview(nameLabel)
         return topHalfView
     }()
 
-    var emailField = getFieldContainer(textLabel: "Email", textLabelValue: "sangesherpa1215@gmail.com")
-    var genderField = getFieldContainer(textLabel: "Gender", textLabelValue: "Male")
+    var emailField = getFieldContainer(textLabel: "Email", textLabelValue: "email")
+    var genderField = getFieldContainer(textLabel: "Gender", textLabelValue: "gender")
 
-    var changePasswordField = getFieldContainer(textLabel: "Change Password", textLabelValue: "• • • • • • •")
+    var changePasswordField = getFieldContainer(textLabel: "Change Password")
     var changePasswordArrowButton: UIButton = {
         var btn = UIButton()
         let image = UIImage(systemName: "arrow.right")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal)
@@ -51,14 +66,36 @@ class ProfileViewController: UIViewController {
     }()
 
     var logoutButton = customButton(backgroundColor: UIColor.mainThemeColor, title: "Log Out", titleColor: UIColor.splashLabelColor)
-
-    // MARK: Main Calling Method
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
+    
+    
+    // MARK: Binding Events
+    override func bindingEvents() {
+        self.userProfileImageRelay.bind(to: self.userProfileImage.rx.image).disposed(by: disposebag)
+        
+        self.userProfileImageRelay.subscribe(onNext: { [weak self] in
+            guard let preview = self?.placeholderImage else { return }
+            preview.isHidden =  $0 !== nil
+            
+        }).disposed(by: disposebag)
+        
+        self.userProfileImage.rx.tapGesture()
+            .when(.recognized)
+            .flatMap { [self] it in
+                pickImages(max:1)
+            }.map{
+                $0.first
+            }
+            .filter { $0 != nil }
+            .bind(to: self.userProfileImageRelay).disposed(by: disposebag)
+        
+        self.userProfileImageURL.bind{
+            self.placeholderImage.isHidden = ($0 != nil)
+            self.userProfileImage.loadImage(src: $0 , type: .User)
+        }.disposed(by: disposebag)
+            
     }
 
-    private func setupUI() {
+    override func setupUI() {
         view.backgroundColor = UIColor.mainBackgroundColor
 
         view.addSubview(topHalfView)
@@ -72,12 +109,16 @@ class ProfileViewController: UIViewController {
             make.left.right.equalToSuperview()
             make.height.equalTo(330)
         }
-        imageContainer.snp.makeConstraints { make in
+        placeholderImage.snp.makeConstraints { make in
+            make.width.height.equalTo(150)
+            make.center.equalToSuperview()
+        }
+        userProfileImage.snp.makeConstraints { make in
             make.width.height.equalTo(150)
             make.center.equalToSuperview()
         }
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageContainer.snp.bottom).offset(20)
+            make.top.equalTo(userProfileImage.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
         }
 

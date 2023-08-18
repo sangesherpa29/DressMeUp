@@ -12,7 +12,7 @@ import UIKit
 func getFieldContainer(
     textLabel: String,
     textLabelFont: UIFont? = UIFont(name: "OpenSans-SemiBold", size: 15),
-    textLabelValue: String,
+    textLabelValue: String = "",
     textLabelValueFont: UIFont? = UIFont(name: "OpenSans-Regular", size: 13)
     ) -> UIView {
     

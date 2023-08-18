@@ -127,7 +127,7 @@ extension ClosetsViewController: UITableViewDelegate, UITableViewDataSource {
         
         // pushes a ViewController when a closet(table cell) is tapped
         let singleClosetVC = SingleClosetViewController()
-        singleClosetVC.closetName.text = closets[indexPath.row]
+        singleClosetVC.navigationItem.title = closets[indexPath.row]
         self.navigationController?.pushViewController(singleClosetVC, animated: true)
     }
     
