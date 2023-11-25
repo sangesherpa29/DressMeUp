@@ -4,8 +4,12 @@ import Alamofire
 
 class HomeViewController: UIViewController {
     
-    // this array of images if populated with images from the API Call - fetchPhotos()
-    var images = [UIImage]()
+    private lazy var session : URLSession = {
+        URLCache.shared.memoryCapacity = 512 * 1024 * 1024
+        let configuration = URLSessionConfiguration.default
+        configuration.requestCachePolicy = .returnCacheDataElseLoad
+        return URLSession(configuration: configuration)
+    }()
 
     lazy var collectionView : UICollectionView = {
         var flowlayout = UICollectionViewFlowLayout()
@@ -19,7 +23,6 @@ class HomeViewController: UIViewController {
         collectionView.backgroundColor = UIColor.mainBackgroundColor
         return collectionView
     }()
-
     
     // MARK: Labels
     lazy var inspirationsLabel : UILabel = {
@@ -47,8 +50,6 @@ class HomeViewController: UIViewController {
         return topBarStack
     }()
 
-
-    // MARK: Container Views
     lazy var topBar : UIView = {
         var topBar = UIView()
         topBar.backgroundColor = UIColor.mainThemeColor
@@ -72,8 +73,6 @@ class HomeViewController: UIViewController {
 
         view.addSubview(topBar)
         view.addSubview(collectionView)
-
-        cameraButton.addTarget(self, action: #selector(cameraTappedAction), for: .touchUpInside)
         
         // MARK: Constraints
         topBar.snp.makeConstraints { make in
@@ -99,6 +98,9 @@ class HomeViewController: UIViewController {
        
     }
     
+    // this array of images if populated with images from the API Call - fetchPhotos()
+    var images = [UIImage]()
+    
     // Solely used to add images from api to the images array above
     private func fetchImagesFromApi() {
         var count = 0
@@ -114,32 +116,6 @@ class HomeViewController: UIViewController {
             // reload the collection View since to accomodate each image update
             self.collectionView.reloadData()            
         }
-    }
-    
-    @objc func cameraTappedAction() {
-        let alert = UIAlertController(title: "Add Photo", message: "Please select a method", preferredStyle: .alert)
-    
-        alert.addAction(UIAlertAction(title: "Add from library", style: .default) { _ in
-            let vc = UIImagePickerController()
-            vc.sourceType = .photoLibrary
-            vc.delegate = self
-            vc.allowsEditing = true
-            self.present(vc, animated: true)
-        })
-        
-        alert.addAction(UIAlertAction(title: "Take a photo", style: .default) { _ in
-            let vc = UIImagePickerController()
-            vc.sourceType = .camera
-            vc.delegate = self
-            vc.allowsEditing = true
-            self.present(vc, animated: true)
-        })
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default) { _ in
-            alert.dismiss(animated: true)
-        })
-        
-        self.present(alert, animated: true, completion: nil)
     }
 
 }
@@ -173,7 +149,6 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
                     if let image = UIImage(data: data) {
                     
                         // Append that image to the images array above.
-                        // self.images.append(image)
                         DispatchQueue.main.async {
                             cell.imageView.image = image
                         }

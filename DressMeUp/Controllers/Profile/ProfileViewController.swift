@@ -68,33 +68,6 @@ class ProfileViewController: RootViewController {
     var logoutButton = customButton(backgroundColor: UIColor.mainThemeColor, title: "Log Out", titleColor: UIColor.splashLabelColor)
     
     
-    // MARK: Binding Events
-    override func bindingEvents() {
-        self.userProfileImageRelay.bind(to: self.userProfileImage.rx.image).disposed(by: disposebag)
-        
-        self.userProfileImageRelay.subscribe(onNext: { [weak self] in
-            guard let preview = self?.placeholderImage else { return }
-            preview.isHidden =  $0 !== nil
-            
-        }).disposed(by: disposebag)
-        
-        self.userProfileImage.rx.tapGesture()
-            .when(.recognized)
-            .flatMap { [self] it in
-                pickImages(max:1)
-            }.map{
-                $0.first
-            }
-            .filter { $0 != nil }
-            .bind(to: self.userProfileImageRelay).disposed(by: disposebag)
-        
-        self.userProfileImageURL.bind{
-            self.placeholderImage.isHidden = ($0 != nil)
-            self.userProfileImage.loadImage(src: $0 , type: .User)
-        }.disposed(by: disposebag)
-            
-    }
-
     override func setupUI() {
         view.backgroundColor = UIColor.mainBackgroundColor
 

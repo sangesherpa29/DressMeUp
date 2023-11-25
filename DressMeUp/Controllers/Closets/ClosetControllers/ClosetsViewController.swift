@@ -74,12 +74,12 @@ class ClosetsViewController: UIViewController {
     }
     
     @objc func addClosetTapped(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Add a Closet", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Create a Closet", message: "", preferredStyle: .alert)
         alert.addTextField { textfield in
             textfield.placeholder = "Closet Name"
         }
         
-        alert.addAction(UIAlertAction(title: "Add", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "Create", style: .default) { _ in
             // Get name of added closet
             if let closetName = alert.textFields?.first?.text {
                 // Add to the closets array which then reflects changes onto the table

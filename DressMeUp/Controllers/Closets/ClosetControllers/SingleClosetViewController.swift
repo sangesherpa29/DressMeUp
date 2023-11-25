@@ -11,6 +11,13 @@ import MaterialComponents.MaterialTabs_TabBarView
 
 class SingleClosetViewController: UIViewController {
     
+    lazy var cameraButton: UIButton = {
+        var cameraButton = UIButton()
+        let image = UIImage(systemName: "camera.circle")?.withTintColor(UIColor.mainThemeColor, renderingMode: .alwaysOriginal)
+        cameraButton.setBackgroundImage(image, for: .normal)
+        return cameraButton
+    }()
+    
     let tabBarView = MDCTabBarView()
     let outfitsView = OutfitsView()
     let piecesView = PiecesView()
@@ -25,6 +32,9 @@ class SingleClosetViewController: UIViewController {
         view.addSubview(tabBarView)
         view.addSubview(outfitsView)
         view.addSubview(piecesView)
+        view.addSubview(cameraButton)
+        
+        cameraButton.addTarget(self, action: #selector(cameraTappedAction), for: .touchUpInside)
         
         tabBarView.items = [
             UITabBarItem(title: "Outfits", image: nil , tag: 0),
@@ -59,6 +69,37 @@ class SingleClosetViewController: UIViewController {
             make.right.equalToSuperview().offset(-7)
             make.bottom.equalToSuperview()
         }
+        
+        cameraButton.snp.makeConstraints { make in
+            make.width.height.equalTo(60)
+            make.right.bottom.equalTo(view.safeAreaLayoutGuide).offset(-25)
+        }
+    }
+    
+    @objc func cameraTappedAction() {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Photo Library", style: .default) { _ in
+            let vc = UIImagePickerController()
+            vc.sourceType = .photoLibrary
+            vc.delegate = self
+            vc.allowsEditing = true
+            self.present(vc, animated: true)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Open Camera", style: .default) { _ in
+            let vc = UIImagePickerController()
+            vc.sourceType = .camera
+            vc.delegate = self
+            vc.allowsEditing = true
+            self.present(vc, animated: true)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default) { _ in
+            self.dismiss(animated: true)
+        })
+        
+        self.present(alert, animated: true)
     }
 }
 
@@ -79,4 +120,34 @@ extension SingleClosetViewController : MDCTabBarViewDelegate {
             break
         }
     }
+}
+
+
+extension SingleClosetViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    private func openAlert(with name: String, msg message: String) {
+//        let alert = UIAlertController(title: name, message: <#T##String?#>, preferredStyle: .)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let selectedImage = info[.originalImage] as? UIImage {
+            // set the image to the collection view cell
+            
+            // code here
+            
+            
+            
+            // convert image to Data
+            if let imageData = selectedImage.jpegData(compressionQuality: 0.8) {
+                let closetObj = Closet()
+                let itemObj = Item()
+                itemObj.imageData = imageData
+//                itemObj.
+//                closetObj.items.append("")
+                
+            }
+        }
+    }
+    
 }

@@ -32,23 +32,6 @@ class PiecesView: UIView {
         piecesCollectionView.dataSource = self
         piecesCollectionView.delegate = self
         
-        clothingItem.append(UIImage(named: "img1"))
-        clothingItem.append(UIImage(named: "img2"))
-        clothingItem.append(UIImage(named: "img3"))
-        clothingItem.append(UIImage(named: "img4"))
-        clothingItem.append(UIImage(named: "img1"))
-        clothingItem.append(UIImage(named: "img2"))
-        clothingItem.append(UIImage(named: "img3"))
-        clothingItem.append(UIImage(named: "img4"))
-        clothingItem.append(UIImage(named: "img1"))
-        clothingItem.append(UIImage(named: "img2"))
-        clothingItem.append(UIImage(named: "img3"))
-        clothingItem.append(UIImage(named: "img4"))
-        clothingItem.append(UIImage(named: "img1"))
-        clothingItem.append(UIImage(named: "img2"))
-        clothingItem.append(UIImage(named: "img3"))
-        clothingItem.append(UIImage(named: "img4"))
-        
         piecesCollectionView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(8)
             make.bottom.right.equalToSuperview().offset(-8)
@@ -64,7 +47,7 @@ class PiecesView: UIView {
 extension PiecesView : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        clothingItem.count
+        3
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -81,7 +64,8 @@ extension PiecesView : UICollectionViewDelegate, UICollectionViewDataSource, UIC
         }
 
         // Configure the cell
-        cell.imageView.image = clothingItem[indexPath.row]
+        cell.backgroundColor = .black
+//        cell.imageView.image = clothingItem[indexPath.row]
         return cell
     }
     

@@ -33,7 +33,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
     }
     
-    func configure(with urlString: String) {
+    func configure(with urlString: String, session: URLSession) {
         guard let url = URL(string: urlString) else {
             print("Could not parse url")
             return
@@ -46,7 +46,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
             }
             
             DispatchQueue.main.async {
-                let image = UIImage(data: data)
+                let image = UIImage(data: data)?.resizedImage(with: CGSize(width: 200.0, height: 200.0))
                 self?.imageView.image = image
             }
         }
