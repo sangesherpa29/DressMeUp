@@ -2,17 +2,18 @@
 //  RegisterViewModel.swift
 //  DressMeUp
 //
-//  Created by Sange Sherpa on 19/11/2023.
+//  Created by Sange Sherpa on 25/11/2023.
 //
 
+import Foundation
 import FirebaseAuth
 import FirebaseFirestore
-import Foundation
 
 class RegisterViewModel : ObservableObject {
     @Published var name = ""
     @Published var email = ""
     @Published var password = ""
+    @Published var errMessage = ""
     
     init() {}
     
@@ -30,17 +31,21 @@ class RegisterViewModel : ObservableObject {
     
     
     private func validate() -> Bool {
+        errMessage = ""
         guard !name.trimmingCharacters(in: .whitespaces).isEmpty,
               !email.trimmingCharacters(in: .whitespaces).isEmpty,
               !password.trimmingCharacters(in: .whitespaces).isEmpty else {
-                  return false
-              }
+            errMessage = "Please fill in all fields."
+            return false
+        }
         
         guard email.contains("@") && email.contains(".") else {
+            errMessage = "Please enter a valid email"
             return false
         }
         
         guard password.count >= 6 else {
+            errMessage = "Password must be greater than 6 characters."
             return false
         }
         
@@ -56,6 +61,8 @@ class RegisterViewModel : ObservableObject {
         
         let db = Firestore.firestore()
         
+        db.collection("users")
+            .document(id)
+            .setData(user.asDictionary())
     }
-    private func validate() {}
 }

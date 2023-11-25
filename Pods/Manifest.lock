@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.7.1)
+  - Alamofire (5.8.1)
   - BSImagePicker (3.3.1)
   - Differentiator (5.0.0)
   - MaterialComponents/AnimationTiming (124.2.0)
@@ -71,9 +71,9 @@ PODS:
     - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
     - "MaterialComponents/TextControls+BaseTextFields"
   - MDFInternationalization (3.0.0)
-  - RxCocoa (6.5.0):
-    - RxRelay (= 6.5.0)
-    - RxSwift (= 6.5.0)
+  - RxCocoa (6.6.0):
+    - RxRelay (= 6.6.0)
+    - RxSwift (= 6.6.0)
   - RxDataSources (5.0.0):
     - Differentiator (~> 5.0)
     - RxCocoa (~> 6.0)
@@ -81,12 +81,12 @@ PODS:
   - RxGesture (4.0.4):
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
-  - RxRelay (6.5.0):
-    - RxSwift (= 6.5.0)
-  - RxSwift (6.5.0)
-  - SDWebImage (5.17.0):
-    - SDWebImage/Core (= 5.17.0)
-  - SDWebImage/Core (5.17.0)
+  - RxRelay (6.6.0):
+    - RxSwift (= 6.6.0)
+  - RxSwift (6.6.0)
+  - SDWebImage (5.18.5):
+    - SDWebImage/Core (= 5.18.5)
+  - SDWebImage/Core (5.18.5)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
@@ -120,19 +120,19 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
+  Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
   BSImagePicker: 0fe04b574d4d6b81093785d2af6c26227efc8428
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
-  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
-  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
-  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
-  SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9
+  RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
+  RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
+  SDWebImage: 7ac2b7ddc5e8484c79aa90fc4e30b149d6a2c88f
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 7c5ce66664d7c19c369f923980d99e6299473ae6
+PODFILE CHECKSUM: 297071c50b8eee1cf3083dc40df77f215301d30c
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.14.3

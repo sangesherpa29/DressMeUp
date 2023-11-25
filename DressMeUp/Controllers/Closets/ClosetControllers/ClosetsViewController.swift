@@ -81,7 +81,7 @@ class ClosetsViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Create", style: .default) { _ in
             // Get name of added closet
-            if let closetName = alert.textFields?.first?.text {
+            if let closetName = alert.textFields?.first?.text, !closetName.isEmpty {
                 // Add to the closets array which then reflects changes onto the table
                 self.closets.append(closetName)
                 self.closetsTableView.reloadData()
