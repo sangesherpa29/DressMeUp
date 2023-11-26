@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		07E3496CF11B2B9ECF00DCC6 /* Pods_DressMeUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CCC18C64624007287B2C0B /* Pods_DressMeUp.framework */; };
+		5001562F2B1372BB00F8FF57 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5001562E2B1372BB00F8FF57 /* ProfileViewModel.swift */; };
+		500156312B13775000F8FF57 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500156302B13775000F8FF57 /* ChangePasswordView.swift */; };
+		500156332B13775800F8FF57 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500156322B13775800F8FF57 /* ChangePasswordViewModel.swift */; };
 		50044A262AD2E8980038BA9D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50044A252AD2E8980038BA9D /* Extension.swift */; };
 		500DA9DE2A90DA2E00A008E1 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500DA9DD2A90DA2E00A008E1 /* Models.swift */; };
 		50161AA72B0A3B56001234A0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50161AA62B0A3B56001234A0 /* LoginViewModel.swift */; };
@@ -72,6 +75,9 @@
 
 /* Begin PBXFileReference section */
 		0AB0AC01A5B03E688A5598F9 /* Pods-DressMeUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressMeUp.debug.xcconfig"; path = "Target Support Files/Pods-DressMeUp/Pods-DressMeUp.debug.xcconfig"; sourceTree = "<group>"; };
+		5001562E2B1372BB00F8FF57 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		500156302B13775000F8FF57 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		500156322B13775800F8FF57 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		50044A252AD2E8980038BA9D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		500DA9DD2A90DA2E00A008E1 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		50161AA62B0A3B56001234A0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -323,6 +329,9 @@
 			isa = PBXGroup;
 			children = (
 				50CBD7522B124D700063FDE2 /* ProfileView.swift */,
+				5001562E2B1372BB00F8FF57 /* ProfileViewModel.swift */,
+				500156302B13775000F8FF57 /* ChangePasswordView.swift */,
+				500156322B13775800F8FF57 /* ChangePasswordViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -582,11 +591,13 @@
 				504FDBD92A28DAED00D275D4 /* TopBarView.swift in Sources */,
 				50D1EF5C2A166AC8008E3DB6 /* AppDelegate.swift in Sources */,
 				50CBD73C2B11EE4F0063FDE2 /* Encodable.swift in Sources */,
+				500156312B13775000F8FF57 /* ChangePasswordView.swift in Sources */,
 				503FF8E82A5E836D004386D9 /* NSObject.swift in Sources */,
 				5086BE682A2EBEC700275343 /* FieldsContainer.swift in Sources */,
 				50AD69A22A5BF05A009C418B /* LoginViewController.swift in Sources */,
 				50F145CF2A297751007E39E6 /* SplashScreenViewController.swift in Sources */,
 				50CBD7472B11F2B20063FDE2 /* HeaderView.swift in Sources */,
+				5001562F2B1372BB00F8FF57 /* ProfileViewModel.swift in Sources */,
 				50D1EF802A16950F008E3DB6 /* MainTabbarController.swift in Sources */,
 				50E1071C2A2C18CD00AC18DC /* ColorExtension.swift in Sources */,
 				50AD699E2A5BECB0009C418B /* SignUpViewController.swift in Sources */,
@@ -597,6 +608,7 @@
 				505135292A5D392000883383 /* FetchPhotos.swift in Sources */,
 				503FF8F62A5E8761004386D9 /* DimensionExtension.swift in Sources */,
 				50A70CD22A7ABFA000978AF7 /* PiecesView.swift in Sources */,
+				500156332B13775800F8FF57 /* ChangePasswordViewModel.swift in Sources */,
 				50161AA72B0A3B56001234A0 /* LoginViewModel.swift in Sources */,
 				50CBD7502B12485C0063FDE2 /* MainViewModel.swift in Sources */,
 				50CBD7532B124D700063FDE2 /* ProfileView.swift in Sources */,
@@ -736,7 +748,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -765,7 +777,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

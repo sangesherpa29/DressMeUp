@@ -13,7 +13,13 @@ struct MainView: View {
     var body: some View {
         if viewmodel.isSignedIn, !viewmodel.currentUserId.isEmpty {
             // signed in state
-            ProfileView()
+            TabView {
+                ProfileView()
+                    .tabItem {
+                        Label("Profile", systemImage: "person.circle")
+                    }
+            }
+            
         } else {
             LoginView()
         }
