@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject var viewmodel = ProfileViewModel()
+    @State var isChangePasswordPresented = false
     
     var body: some View {
         NavigationView {
@@ -36,10 +37,15 @@ struct ProfileView: View {
                         }
                         .padding()
                         
-                        NavigationLink("Change Password", 
-                                       destination: ChangePasswordView())
-                            .foregroundColor(.pink)
-                            .bold()
+                        Button("Change Password") {
+                            isChangePasswordPresented = true
+                        }
+                        .foregroundColor(.blue)
+                        .bold()
+                        .sheet(isPresented: $isChangePasswordPresented) {
+                            ChangePasswordView(isPresented: $isChangePasswordPresented)
+                        }
+                        .padding()
                     }
                     
                     // Signout
@@ -49,7 +55,7 @@ struct ProfileView: View {
                     {
                         viewmodel.signout()
                     }
-                    .frame(width: 100, height: 50)
+                    .frame(width: 120, height: 60)
                     
                     Spacer()
                 } else {

@@ -9,18 +9,43 @@ import SwiftUI
 
 struct ChangePasswordView: View {
     @StateObject var viewmodel = ChangePasswordViewModel()
+    @Binding var isPresented: Bool
     
     var body: some View {
         VStack(spacing: 10) {
             Form {
-                TextField("Old Password", text: $viewmodel.oldPassword)
-                    .textFieldStyle(DefaultTextFieldStyle())
+                if let errorMessage = viewmodel.errorMessage {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                }
                 
-                TextField("New Password", text: $viewmodel.newPassword)
+                SecureField("Old Password", text: $viewmodel.oldPassword)
                     .textFieldStyle(DefaultTextFieldStyle())
+                    .autocapitalization(.none)
+                    .autocorrectionDisabled()
                 
-                TextField("Confirm Password", text: $viewmodel.confirmPassword)
+                SecureField("New Password", text: $viewmodel.newPassword)
                     .textFieldStyle(DefaultTextFieldStyle())
+                    .autocapitalization(.none)
+                    .autocorrectionDisabled()
+                
+                SecureField("Confirm Password", text: $viewmodel.confirmPassword)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                    .autocapitalization(.none)
+                    .autocorrectionDisabled()
+                
+                CustomButtonView(title: "Change",
+                                 titleColor: .white,
+                                 background: .blue)
+                {
+                    viewmodel.changePassword()
+                }
+                .padding(.vertical, 10)
+                .onChange(of: viewmodel.isPasswordChanged) { isChanged in
+                    if isChanged {
+                        isPresented = false
+                    }
+                }
             }
             
             Spacer()
@@ -34,5 +59,5 @@ struct ChangePasswordView: View {
 }
 
 #Preview {
-    ChangePasswordView()
+    ChangePasswordView(isPresented: .constant(false))
 }
