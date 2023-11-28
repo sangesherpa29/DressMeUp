@@ -14,6 +14,16 @@ struct MainView: View {
         if viewmodel.isSignedIn, !viewmodel.currentUserId.isEmpty {
             // signed in state
             TabView {
+                OutfitView()
+                    .tabItem {
+                        Label("Outfits", systemImage: "figure.arms.open")
+                    }
+                
+                CameraView()
+                    .tabItem {
+                        Label("Camera", systemImage: "camera.viewfinder")
+                    }
+                
                 ProfileView()
                     .tabItem {
                         Label("Profile", systemImage: "person.circle")

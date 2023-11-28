@@ -14,26 +14,27 @@ struct CustomButtonView: View {
     let action: () -> Void
     
     var body: some View {
-        Button {
+        
+        Button(action: {
             action()
-        } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(background)
-                
-                Text(title)
-                    .foregroundColor(titleColor)
-                    .bold()
-            }
+        }) {
+            Text(title)
+                .foregroundColor(titleColor)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(background)
+                .cornerRadius(10)
+                .shadow(radius: 5)
         }
         .padding(.vertical, 10)
+        
     }
 }
 
 #Preview {
     CustomButtonView(title: "Label",
                      titleColor: .white,
-                     background: .black) {
+                     background: .blue) {
         
     }
 }

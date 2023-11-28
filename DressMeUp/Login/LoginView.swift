@@ -26,12 +26,16 @@ struct LoginView: View {
                     }
                     
                     TextField("Email Address", text: $viewmodel.email)
-                        .textFieldStyle(DefaultTextFieldStyle())
+                        .padding(.vertical, 10)
+                        .foregroundColor(.black)
                         .autocapitalization(.none)
-                        .autocorrectionDisabled()
+                        .disableAutocorrection(true)
                     
                     SecureField("Password", text: $viewmodel.password)
-                        .textFieldStyle(DefaultTextFieldStyle())
+                        .padding(.vertical, 10)
+                        .foregroundColor(.black)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
                     
                     CustomButtonView(title: "Log In",
                                      titleColor: .white,

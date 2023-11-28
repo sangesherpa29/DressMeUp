@@ -25,15 +25,22 @@ struct RegisterView: View {
                 }
                 
                 TextField("Full Name", text: $viewmodel.name)
-                    .textFieldStyle(DefaultTextFieldStyle())
+                    .padding(.vertical, 10)
+                    .foregroundColor(.black)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
                 
                 TextField("Email Address", text: $viewmodel.email)
-                    .textFieldStyle(DefaultTextFieldStyle())
+                    .padding(.vertical, 10)
+                    .foregroundColor(.black)
                     .autocapitalization(.none)
-                    .autocorrectionDisabled()
+                    .disableAutocorrection(true)
                 
                 SecureField("Password", text: $viewmodel.password)
-                    .textFieldStyle(DefaultTextFieldStyle())
+                    .padding(.vertical, 10)
+                    .foregroundColor(.black)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
                 
                 CustomButtonView(title: "Register",
                                  titleColor: .white,
