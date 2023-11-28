@@ -13,7 +13,7 @@ class ChangePasswordViewModel: ObservableObject {
     @Published var oldPassword = ""
     @Published var newPassword = ""
     @Published var confirmPassword = ""
-    @Published var errorMessage: String?
+    @Published var message: String?
     @Published var isPasswordChanged: Bool = false
     
     init() {}
@@ -31,14 +31,14 @@ class ChangePasswordViewModel: ObservableObject {
             guard let self = self else {return}
             
             if let error = error {
-                self.errorMessage = error.localizedDescription
+                self.message = error.localizedDescription
                 return
             }
             
             // User reauthenticated successfully, now change the password
             user.updatePassword(to: self.newPassword) { error in
                 if let error = error {
-                    self.errorMessage = error.localizedDescription
+                    self.message = error.localizedDescription
                     return
                 }
                 
@@ -47,6 +47,7 @@ class ChangePasswordViewModel: ObservableObject {
                 self.newPassword = ""
                 self.confirmPassword = ""
                 self.isPasswordChanged = true
+                self.message = "Password Changed Successful"
             }
         }
     }

@@ -14,8 +14,8 @@ struct ChangePasswordView: View {
     var body: some View {
         VStack(spacing: 10) {
             Form {
-                if let errorMessage = viewmodel.errorMessage {
-                    Text(errorMessage)
+                if let message = viewmodel.message {
+                    Text(message)
                         .foregroundColor(.red)
                 }
                 
@@ -43,7 +43,9 @@ struct ChangePasswordView: View {
                 .padding(.vertical, 10)
                 .onChange(of: viewmodel.isPasswordChanged) { isChanged in
                     if isChanged {
-                        isPresented = false
+                        delay(seconds: 1.2) {
+                            isPresented = false
+                        }
                     }
                 }
             }
@@ -55,6 +57,12 @@ struct ChangePasswordView: View {
         .padding()
         
         Spacer()
+    }
+    
+    func delay(seconds: Double, closure: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            closure()
+        }
     }
 }
 

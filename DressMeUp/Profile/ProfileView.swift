@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @StateObject var viewmodel = ProfileViewModel()
     @State var isChangePasswordPresented = false
+    @State var signoutConfirmation = false
     
     var body: some View {
         NavigationView {
@@ -53,16 +54,23 @@ struct ProfileView: View {
                                      titleColor: .white,
                                      background: .blue)
                     {
-                        viewmodel.signout()
+                        signoutConfirmation = true
+                        //                        viewmodel.signout()
                     }
                     .frame(width: 120, height: 60)
                     
                     Spacer()
                 } else {
-                    
+                    Text("Could not find user ...")
                 }
             }
             .navigationTitle("Profile")
+            .alert(isPresented: $signoutConfirmation) {
+                Alert(title: Text("Are you sure you want to sign out?"),
+                      message: Text(""),
+                      primaryButton: .default(Text("Ok")) { viewmodel.signout() },
+                      secondaryButton: .cancel())
+            }
         }
         .onAppear {
             viewmodel.fetchUser()
