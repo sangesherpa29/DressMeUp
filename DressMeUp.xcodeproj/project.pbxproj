@@ -13,6 +13,7 @@
 		500156332B13775800F8FF57 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500156322B13775800F8FF57 /* ChangePasswordViewModel.swift */; };
 		50161AA72B0A3B56001234A0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50161AA62B0A3B56001234A0 /* LoginViewModel.swift */; };
 		50161AA92B0A3B5E001234A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50161AA82B0A3B5E001234A0 /* User.swift */; };
+		501ABD722B1C14B4000430EB /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501ABD712B1C14B4000430EB /* ImagePicker.swift */; };
 		503FF8F22A5E859F004386D9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 503FF8F12A5E859F004386D9 /* FirebaseAnalytics */; };
 		503FF8F42A5E859F004386D9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 503FF8F32A5E859F004386D9 /* FirebaseAuth */; };
 		5068975F2B162C4B0041BF10 /* OutfitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5068975E2B162C4B0041BF10 /* OutfitViewModel.swift */; };
@@ -47,6 +48,7 @@
 		500156322B13775800F8FF57 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		50161AA62B0A3B56001234A0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		50161AA82B0A3B5E001234A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		501ABD712B1C14B4000430EB /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5068975E2B162C4B0041BF10 /* OutfitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitViewModel.swift; sourceTree = "<group>"; };
 		506897602B162C520041BF10 /* OutfitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitView.swift; sourceTree = "<group>"; };
 		506897662B16400B0041BF10 /* CustomTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				5068976F2B164DC50041BF10 /* CameraView.swift */,
+				501ABD712B1C14B4000430EB /* ImagePicker.swift */,
 			);
 			path = CameraTab;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				5068976D2B1648FB0041BF10 /* OutfitItemView.swift in Sources */,
 				50CBD7472B11F2B20063FDE2 /* HeaderView.swift in Sources */,
 				5001562F2B1372BB00F8FF57 /* ProfileViewModel.swift in Sources */,
+				501ABD722B1C14B4000430EB /* ImagePicker.swift in Sources */,
 				50D1EF5E2A166AC8008E3DB6 /* SceneDelegate.swift in Sources */,
 				500156332B13775800F8FF57 /* ChangePasswordViewModel.swift in Sources */,
 				50161AA72B0A3B56001234A0 /* LoginViewModel.swift in Sources */,
