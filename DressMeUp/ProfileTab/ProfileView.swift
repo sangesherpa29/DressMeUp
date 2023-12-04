@@ -11,15 +11,18 @@ struct ProfileView: View {
     @StateObject var viewmodel = ProfileViewModel()
     @State var isChangePasswordPresented = false
     @State var signoutConfirmation = false
+    // Camera related
     @State var showActionSheet = false
     @State var showImagePicker = false
+    @State var image: Image?
+    @State var sourceType: Int = 0
     
     var body: some View {
         ZStack {
             NavigationView {
-        //            if let user = viewmodel.user {
+                if let user = viewmodel.user {
                     VStack(alignment: .center, spacing: 20) {
-                        Image(systemName: "person.circle.fill")
+                        image?
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 100, height: 100)
@@ -31,13 +34,13 @@ struct ProfileView: View {
                                     .offset(x: 35, y: 45)
                             )
                         
-                        //                    Text(user.name)
-                        //                        .font(.title)
-                        //                        .fontWeight(.bold)
-                        //
-                        //                    Text(user.email)
-                        //                        .font(.subheadline)
-                        //                        .foregroundColor(.gray)
+                        Text(user.name)
+                            .font(.title)
+                            .fontWeight(.bold)
+                        
+                        Text(user.email)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
                         
                         CustomButtonView(title: "Change Password",
                                          titleColor: .white,
@@ -77,27 +80,30 @@ struct ProfileView: View {
                                     buttons: [
                                         // Camera
                                         ActionSheet.Button.default(Text("Camera"), action: {
-                                            
+                                            self.sourceType = 0
+                                            self.showImagePicker.toggle()
                                         }),
                                         // Photo Gallery
                                         ActionSheet.Button.default(Text("Gallery"), action: {
+                                            self.sourceType = 1
                                             self.showImagePicker.toggle()
                                         }),
                                         ActionSheet.Button.cancel()
                                     ])
                     })
-                    //            } else {
-                    //                Text("Could not find user")
-                    //            }
+                } else {
+                    Text("Could not find user")
+                }
                 
                 
             }
             
             if showImagePicker {
-                ImagePicker(isVisible: $showImagePicker)
+                ImagePicker(isVisible: $showImagePicker, image: $image, sourceType: sourceType)
             }
         }
         .onAppear {
+            self.image = Image(systemName: "person.circle.fill")
             viewmodel.fetchUser()
         }
     }
